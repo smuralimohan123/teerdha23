@@ -1,0 +1,869 @@
+
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Booking Form</title>
+    <!-- Add these lines in the <head> section of your HTML -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-vhMXyZY3XcBh5NbKg3Sg8qKAPc8NJ+Ct0cU98z/0Za/4MY8iFPtdSYbcynVWxMKYTtJgQ2O5tRhTGcDnDwKlWg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
+
+    <link rel="stylesheet" href="{% static 'CSS/ticketbooking.css' %}">
+
+    <script src="https://kit.fontawesome.com/0f84414d01.js" crossorigin="anonymous"></script>
+
+    <!-- Google fonts (Poppins) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" />
+
+    {% block content %}
+    <style>
+      
+        
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            max-width: 1100px;
+            width: 100%;
+            margin-top: 160px;
+            margin-left:220px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .radio-group {
+            display: flex;
+            margin-bottom: 16px;
+        }
+
+        .radio-group label {
+            margin-right: 16px;
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            flex: 1;
+            box-sizing: border-box;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        select{
+            padding: 8px; /* Adjust the padding to increase or decrease the height */
+            font-size: 1rem; /* Adjust the font size if needed */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            flex: 1;
+            box-sizing: border-box;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .form-group.two-in-one-line {
+            display: flex;
+            gap: 10px;
+        }
+
+       
+
+        .travellers-input {
+            width: 160px;
+            position: relative; /* Change from absolute to relative */
+            margin-top: -px; /* Adjust the value as needed to move it up */
+        }
+        
+
+        .travellers-input span {
+            position: absolute;
+            left: 0;
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        .travellers-input input {
+            width: 100%;
+
+                padding: 10px;
+                border: 2px solid #7f8fa6;
+                border-radius: 5px;
+                outline: none;
+                font-size: 1rem;
+                transition: 0.6s;
+        }
+
+        #adults,
+        #children {
+            width: 40px;
+        }
+
+        .travellers-input button {
+            padding: 8px;
+            background-color: #ddd;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-container {
+            /* ... (existing styles) */
+            overflow: visible;
+        }
+        
+        .travellers-popup {
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            display: none;
+            z-index: 2; /* Adjust the z-index value */
+            width: 200px; /* Adjust the width as needed */
+            top: 100%; /* Position below the input */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Adjust for centering */
+        }
+        .travellers-popup span {
+            display: block;
+        }
+
+        .travellers-popup button {
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .travellers-popup button:hover {
+            background-color: #45a049;
+        }    
+        .search-button {
+            position: relative;
+            display: inline-block;
+            font-size: 1.5em;
+            margin: 0 auto;
+            letter-spacing: .1em;
+            color: #0ef;
+            text-decoration: none;
+            text-transform: uppercase;
+            border: 2px solid #0ef;
+            padding: 10px 30px;
+            z-index: 1;
+            overflow: hidden;
+            transition: color 1s, box-shadow 1s;
+        }
+        .search-button:hover {
+            transition-delay: 0s, 1s;
+            color: #fff;
+            box-shadow:
+                0 0 10px #0ef,
+                0 0 20px #0ef,
+                0 0 40px #0ef,
+                0 0 80px #0ef,
+                
+        }
+        .search-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50px;
+            width: 0;
+            height: 100%;
+            background: #0ef;
+            transform: skewX(35deg);
+            z-index: -1;
+            transition: 1s;
+        }
+        .search-button:hover:before {
+            width: 100%;
+        }
+       
+        .form-group.two-in-one-line {
+            position: relative;
+        }
+          
+        .add-city-button {
+            background-color: #3498db; /* Change this color to your desired color */
+            color: #fff; /* Text color */
+            padding: 8px 15px; /* Adjust padding as needed */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 30px; /* Adjust font size as needed */
+            margin: 0 auto; /* Center the button horizontally */
+            display: block; /* Make it a block-level element for centering */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
+        }
+        .add-city-button i {
+            margin-right: 10px; /* Add space between icon and text */
+        }
+        
+        .add-city-button:hover {
+            background-color: #2980b9; /* Change this color to your desired hover color */
+        }
+        
+        /* Add this style for the delete button with icon */
+        .delete-city-button {
+            background-color: #e74c3c; /* Change this color to your desired color */
+            color: #fff; /* Text color */
+            padding: -1px 6px; /* Adjust padding as needed */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 12px; /* Adjust font size as needed */
+            margin-bottom: 5px; /* Add margin between the delete buttons */
+            
+        }
+        .delete-city-button i {
+            margin-right: 5px; /* Adjust the margin based on your preference */
+        }
+        
+        .delete-city-button:hover {
+            background-color: #c0392b; /* Change this color to your desired hover color */
+        }
+        
+        /* Add these styles to the existing <style> block */
+            .tabs-container {
+                display: flex;
+                justify-content: center;
+                background-color: rgba(241, 241, 241, 0.5); /* Transparent background */
+                padding: 10px;
+            }
+        
+            .tab-content {
+                display: none;
+                /* Make the tab content fill the container */
+            }
+        
+            .tab {
+                cursor: pointer;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                display: flex;
+                align-items: center;
+                margin-right: 9px;
+            }
+        
+            .tab:hover {
+                background-color: red;
+            }
+        
+            
+        
+            /* Style to highlight the active tab */
+            /* .active {
+                background-color: SlateBlue;
+                color: white;
+            } */
+
+            .input-bx{
+                position: relative;
+                width: 300px;
+            }
+            .input-bx input{
+                width: 100%;
+                padding: 10px;
+                border: 2px solid #7f8fa6;
+                border-radius: 5px;
+                outline: none;
+                font-size: 1rem;
+                transition: 0.6s;
+            }
+            
+            .input-bx span{
+                position: absolute;
+                left: 0;
+                padding: 10px;
+                font-size: 1rem;
+                color: #7f8fa6;
+                text-transform: uppercase;
+                pointer-events: none;
+                transition: 0.6s;
+            }
+            .input-bx input:valid ~ span,
+            .input-bx input:focus ~ span{
+                color: #3742fa;
+                transform: translateX(10px) translateY(-7px);
+                font-size: 0.65rem;
+                font-weight: 600;
+                padding: 0 10px;
+                background: #fff;
+                letter-spacing: 0.1rem;
+            }
+            
+            .input-bx input:valid,
+            .input-bx input:focus{
+                color: #3742fa;
+                border: 2px solid #3742fa;
+            
+            }
+
+            .input-bx select:valid ~ span,
+            .input-bx select:focus ~ span{
+                color: #3742fa;
+                transform: translateX(10px) translateY(-7px);
+                font-size: 0.65rem;
+                font-weight: 600;
+                padding: 0 10px;
+                background: #fff;
+                letter-spacing: 0.1rem;
+            }
+            
+            .input-bx select:valid,
+            .input-bx select:focus{
+                color: #3742fa;
+                border: 2px solid #3742fa;
+            
+            }
+
+            #date {
+                padding: 8px; /* Adjust the padding to increase or decrease the height */
+
+            }
+            .button-container {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 20px; /* Adjust the margin as needed */
+            }
+
+            .input-bx select {
+                
+                padding: 9px; /* Adjust the padding as needed */
+                margin-bottom: 16px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                outline: none;
+                font-size: 1rem;
+                transition: 0.6s;
+                height: auto; /* Set height to auto to allow content to determine height */
+            }
+            
+           
+    </style>
+</head>
+<body>
+    
+
+  
+        
+    
+<div class="form-container"  >
+   
+
+       <!-- Update the tabs-container and add icon elements -->
+<div class="tabs-container">
+    <div class="tab" onclick="openTab('flights')"><i class="fa-solid fa-plane-departure"></i> Flights</div>
+    <div class="tab" onclick="openTab('hotels')"><i class="fa-solid fa-hotel"></i> Hotel</div>
+    <div class="tab" onclick="openTab('buses')"><i class="fas fa-bus"></i> Buses</div>
+</div>
+
+
+        <div id="flightsTab" class="tab-content flights-tab-content">
+             <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            <!-- Content for Flights tab -->
+            <div class="radio-group">
+                <label for="oneway"><input type="radio" id="oneway" name="trip-type" value="oneway" checked> One Way</label>
+                <label for="roundtrip"><input type="radio" id="roundtrip" name="trip-type" value="roundtrip"> Round Trip</label>
+                <label for="multicity"><input type="radio" id="multicity" name="trip-type" value="multicity"> Multi City</label>
+            </div>
+
+        <div class="form-group two-in-one-line">
+            <div class="input-bx">
+                <input type="text" id="departure" name="departure"  required>
+                <span for="departure">From</span>
+
+            </div>
+            
+            
+            <div class="input-bx">
+                <input type="text" id="arrival" name="arrival" required>
+                <span for="arrival">Arrival</span>
+
+            </div>
+        
+            <div class="input-bx" >
+                <input type="text" id="Depature Date" name="Depature Date" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'"required >
+                <span for="Depature Date">Depature Date</span>
+            </div>
+
+            
+                <div class="travellers-input input-bx">
+                    <input type="text" id="travellers" name="travellers" readonly onclick="togglePopup('travellersPopup')">
+                    <span for="travellers">Travellers:</span>
+                    <div class="travellers-popup" id="travellersPopup">
+                        <label for="adults">Adults:</label>
+                        <button type="button" onclick="decrement('adults')">-</button>
+                        <input type="text" id="adults" name="adults" value="1" readonly>
+                        <button type="button" onclick="increment('adults')">+</button>
+
+                        <label for="children">Children:</label>
+                        <button type="button" onclick="decrement('children')">-</button>
+                        <input type="text" id="children" name="children" value="0" readonly>
+                        <button type="button" onclick="increment('children')">+</button>
+
+                        <button type="button" onclick="updateTravellers()">Done</button>
+                    </div>
+                </div>
+            
+            
+                <div class="input-bx" id="returnDateContainer" style="display: none;">
+                    <input type="text" id="returnDate" name="returnDate" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'" required >
+                    <span for="returnDate">Return Date:</span>
+                </div>
+            
+             <div class="input-bx">
+                <select id="class" name="class" required>
+                    
+                    <option value="economy">Economy</option>
+                    <option value="business">Business</option>
+                    <option value="first">First Class</option>
+                </select>
+                <span for="class">Class:</span>
+
+             </div>
+        </div>   
+        <div class="multi-city-container">
+            <!-- Additional city rows will be dynamically added here -->
+        </div>
+        
+        <div class="button-container">
+            <button type="button" class="add-city-button" onclick="addCity()">
+                <i class="fa-solid fa-city"></i>Add city
+                <span class="button__icon"></span>
+            </button>
+        
+            <button type="submit" class="search-button">
+                <i class="fas fa-plane"></i> Search Flights
+            </button>
+        </div>
+    </form>
+    </div>
+
+    <div id="hotelsTab" class="tab-content" style="display:none;">
+        <!-- You can create a new form specific hotels here -->
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+                <!-- Content for hotles tab -->
+            
+    
+            <div class="form-group two-in-one-line">
+                <div class="input-bx">
+                    <input type="text" id="departure" name="departure" required>
+                    <span for="place">Place</span>
+                </div>
+                
+           
+            
+                <div class="input-bx" >
+                    <input type="text" id="Checkin" name="Checkin" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'"required >
+                    <span for="Checkin">Checkin</span>
+                </div>
+
+                <div class="input-bx" >
+                    <input type="text" id="Checkout" name="Checkout" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'"required >
+                    <span for="Checkout">Checkout</span>
+                </div>
+    
+                <div class="form-group input-bx">
+                    <select id="class" name="class" required>
+                        <option value="1">1Adults</option>
+                        <option value="2">2Adults</option>
+                        <option value="3">3Adults</option>
+                        <option value="4">4Adults</option>
+                        <option value="5">5Adults</option>
+                        <option value="6">6Adults</option>
+                        <option value="5">7Adults</option>
+                        <option value="6">8Adults</option>
+                    </select>
+                    <span for="class">Adults:</span>
+                </div>
+
+                <div class="form-group input-bx">
+                    <select id="class" name="class" required>
+                        <option value="1">0Children</option>
+                        <option value="2">1Children</option>
+                        <option value="3">2Children</option>
+                        <option value="4">3Children</option>
+                        <option value="5">4Children</option>
+                    </select>
+                    <span for="class">Children:</span>
+
+                </div>
+
+
+                <div class="form-group input-bx">
+                    <select id="class" name="class" required>
+                        <option value="1">1Room</option>
+                        <option value="2">2Room</option>
+                        <option value="3">3Room</option>
+                        <option value="4">4Room</option>
+                        <option value="5">5Room</option>
+                        <option value="6">6Room</option>
+                    </select>
+                    <span for="class">Rooms:</span>
+                </div>
+                
+                
+               
+            </div>   
+           
+            <button type="submit" class="search-button">
+                <i class="fas fa-hotel"></i> Search Hotels
+            </button>
+        </form>
+    </div>
+    
+    <div id="busesTab" class="tab-content" style="display:none;">
+        <!-- Content for Buses tab -->
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+                <!-- Content for Buses tab -->
+            
+    
+            <div class="form-group two-in-one-line">
+                <div class="input-bx">
+                    <input type="text" id="From" name="From" required="required" />
+                    <span for="From">From</span>
+                </div>
+
+                <div class="input-bx">
+                    <input type="text" id="To" name="To" required="required" />
+                    <span for="To">To</span>
+                </div>
+                
+                <div class="input-bx" >
+                    <input type="text" id="Travelling Date" name="Travelling Date" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'"required >
+                    <span for="Travelling Date">Travelling Date</span>
+                </div>
+               
+            </div>   
+           
+            <button type="submit" class="search-button">
+                <i class="fas fa-bus"></i> Search Buses
+            </button>
+        </form>
+    </div>
+    
+</div>
+
+<script>
+
+    
+        function openTab(tabName) {
+            var i, tabContent, tabLinks;
+            
+            // Hide all tab content
+            tabContent = document.getElementsByClassName('tab-content');
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = 'none';
+            }
+    
+            // Deactivate all tabs
+            tabLinks = document.getElementsByClassName('tab');
+            for (i = 0; i < tabLinks.length; i++) {
+                tabLinks[i].classList.remove('active');
+            }
+    
+            // Show the selected tab content and activate the corresponding tab
+            document.getElementById(tabName + 'Tab').style.display = 'block';
+            event.currentTarget.classList.add('active');
+        }
+    
+    
+    function toggleTravellersPopup() {
+        var travellersPopup = document.getElementById('travellersPopup');
+        travellersPopup.style.display = (travellersPopup.style.display === 'none' || travellersPopup.style.display === '') ? 'block' : 'none';
+    }
+    
+
+    function increment(field) {
+        var inputField = document.getElementById(field);
+        inputField.value = parseInt(inputField.value) + 1;
+    }
+    
+    function decrement(field) {
+        var inputField = document.getElementById(field);
+        var currentValue = parseInt(inputField.value);
+        if (currentValue > 0) {
+            inputField.value = currentValue - 1;
+        }
+    }
+    
+    function updateTravellers() {
+        var adultsValue = document.getElementById('adults').value;
+        var childrenValue = document.getElementById('children').value;
+        var travellersField = document.getElementById('travellers');
+        var travellersPopup = document.getElementById('travellersPopup');
+    
+        travellersField.value = adultsValue + ' Adults, ' + childrenValue + ' Children';
+    
+        // Close the popup after clicking "Done"
+        travellersPopup.style.display = 'none';
+    }
+
+    // Get references to the radio buttons and the return date container
+    var oneWayRadioButton = document.getElementById('oneway');
+    var roundTripRadioButton = document.getElementById('roundtrip');
+    var multiCityRadioButton = document.getElementById('multicity');
+    var returnDateContainer = document.getElementById('returnDateContainer');
+
+    // Add event listeners to the radio buttons to handle changes
+    oneWayRadioButton.addEventListener('change', toggleReturnDateField);
+    roundTripRadioButton.addEventListener('change', toggleReturnDateField);
+    multiCityRadioButton.addEventListener('change', toggleReturnDateField);
+
+    // Function to toggle the visibility of the return date field based on the selected radio button
+    function toggleReturnDateField() {
+        if (roundTripRadioButton.checked || multiCityRadioButton.checked) {
+            returnDateContainer.style.display = 'block';
+        } else {
+            returnDateContainer.style.display = 'none';
+        }
+
+        if (oneWayRadioButton.checked) {
+            returnDateContainer.style.display = 'none';
+        }
+    }
+    
+    
+    function addCity() {
+        var multiCityContainer = document.querySelector('.multi-city-container');
+    
+        // Create a new div for the city row
+        var cityRow = document.createElement('div');
+        cityRow.className = 'form-group two-in-one-line';
+    
+
+        // Populate the city row with input fields
+        cityRow.innerHTML = `
+            <div class="input-bx">
+                <input type="text" name="departure[]" required>
+                <span for="departure">Departure:</span>
+            </div>
+            
+            <div class="input-bx">
+                <input type="text" name="arrival[]"  required>
+                <span for="arrival">Arrival:</span>
+
+            </div>
+        
+            <div class="input-bx">
+                <input type="text" name="date[]"  onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'" required>
+                <span for="date">Date:</span>
+
+            </div>
+
+                <div class="travellers-input input-bx">
+                    <input type="text" class="travellers" readonly onclick="toggleTravellersPopup(this)">
+                    <span for="travellers">Travellers:</span>
+                    <div class="travellers-popup">
+                        <label for="adults">Adults:</label>
+                        <button type="button" onclick="decrement(this)">-</button>
+                        <input type="text" class="adults" value="1" readonly>
+                        <button type="button" onclick="increment(this)">+</button>
+    
+                        <label for="children">Children:</label>
+                        <button type="button" onclick="decrement(this)">-</button>
+                        <input type="text" class="children" value="0" readonly>
+                        <button type="button" onclick="increment(this)">+</button>
+    
+                        <button type="button" onclick="updateTravellers(this)">Done</button>
+                    </div>
+                </div>
+            
+            <div class="input-bx">
+                <input type="text" name="returnDate[]" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'" required>
+                <span for="returnDate">Return Date:</span>
+
+            </div>
+
+            <div class="form-group input-bx">
+                <select name="class[]" required>
+                    <option value="economy">Economy</option>
+                    <option value="business">Business</option>
+                    <option value="first">First Class</option>
+                </select>
+                <span for="class">Class:</span>
+
+            </div>
+
+            <button type="button" class="delete-city-button" onclick="deleteCity(this)">
+                <i class="fas fa-trash"></i>
+            </button>
+        `;
+
+        // Attach the functions to the increment and decrement buttons' onclick events
+        cityRow.querySelector('.travellers-popup button[type="button"][onclick="decrement(this)"]').onclick = function () {
+            decrement(this);
+        };
+    
+        cityRow.querySelector('.travellers-popup button[type="button"][onclick="increment(this)"]').onclick = function () {
+            increment(this);
+        };
+
+    // Append the new city row to the multi-city container
+    multiCityContainer.appendChild(cityRow);
+}
+
+function toggleTravellersPopup() {
+    var travellersPopup = document.getElementById('travellersPopup');
+    travellersPopup.style.display = (travellersPopup.style.display === 'none' || travellersPopup.style.display === '') ? 'block' : 'none';
+}
+
+
+
+function increment(field) {
+    var inputField = document.getElementById(field);
+    inputField.value = parseInt(inputField.value) + 1;
+}
+
+function decrement(field) {
+    var inputField = document.getElementById(field);
+    var currentValue = parseInt(inputField.value);
+    if (currentValue > 0) {
+        inputField.value = currentValue - 1;
+    }
+}
+
+function updateTravellers() {
+    var adultsValue = document.getElementById('adults').value;
+    var childrenValue = document.getElementById('children').value;
+    var travellersField = document.getElementById('travellers');
+    var travellersPopup = document.getElementById('travellersPopup');
+
+    travellersField.value = adultsValue + ' Adults, ' + childrenValue + ' Children';
+
+    // Close the popup after clicking "Done"
+    travellersPopup.style.display = 'none';
+}
+
+
+    function deleteCity(button) {
+        var cityRow = button.parentNode;
+        var multiCityContainer = document.querySelector('.multi-city-container');
+
+        // Remove the city row from the multi-city container
+        multiCityContainer.removeChild(cityRow);
+    }
+
+    // Your existing functions (toggleTravellersPopup, updateTravellers, increment, decrement, datepicker, toggleReturnDateField) remain unchanged
+
+    // Attach the function to the Multi City radio button's onchange event
+    document.getElementById('multicity').onchange = function () {
+        // Show or hide the multi-city container based on the radio button's state
+        var multiCityContainer = document.querySelector('.multi-city-container');
+        multiCityContainer.style.display = this.checked ? 'block' : 'none';
+    };
+    document.addEventListener("DOMContentLoaded", function () {
+        // Initially hide the add city button and all city rows
+        var addCityButton = document.querySelector('.add-city-button');
+        addCityButton.style.display = 'none';
+
+        var multiCityContainer = document.querySelector('.multi-city-container');
+        multiCityContainer.style.display = 'none';
+
+        // Function to toggle add city button and city rows visibility
+        function toggleAddCityVisibility() {
+            var multiCityRadioButton = document.getElementById('multicity');
+            var addCityButton = document.querySelector('.add-city-button');
+            var multiCityContainer = document.querySelector('.multi-city-container');
+
+            if (multiCityRadioButton.checked) {
+                addCityButton.style.display = 'block';
+                multiCityContainer.style.display = 'block';
+            } else {
+                addCityButton.style.display = 'none';
+                multiCityContainer.style.display = 'none';
+
+                // Reset added city rows
+                resetAddedCityRows();
+            }
+        }
+
+        // Attach the function to the Multi City radio button's onchange event
+        document.getElementById('multicity').addEventListener('change', toggleAddCityVisibility);
+
+        // Attach the function to the One Way and Round Trip radio buttons' onchange events
+        document.getElementById('oneway').addEventListener('change', toggleAddCityVisibility);
+        document.getElementById('roundtrip').addEventListener('change', toggleAddCityVisibility);
+
+        // Attach the functions to the increment and decrement buttons using event delegation
+        multiCityContainer.addEventListener('click', function (event) {
+            if (event.target.matches('.travellers-popup button[type="button"][onclick="decrement(this)"]')) {
+                decrement(event.target);
+            } else if (event.target.matches('.travellers-popup button[type="button"][onclick="increment(this)"]')) {
+                increment(event.target);
+            }
+        });
+
+        // Trigger the function on page load to set the initial visibility
+        toggleAddCityVisibility();
+
+        // Reset function for added city rows
+        function resetAddedCityRows() {
+            var multiCityContainer = document.querySelector('.multi-city-container');
+            multiCityContainer.innerHTML = ''; // Remove all added city rows
+        }
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        // Initially show the Flights tab content and mark the Flights tab as active
+        document.getElementById('flightsTab').style.display = 'block';
+        document.querySelector('.tab').classList.add('active');
+    });
+
+    function openTab(tabName) {
+        var i, tabContent, tabLinks;
+        
+        // Hide all tab content
+        tabContent = document.getElementsByClassName('tab-content');
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = 'none';
+        }
+
+        // Deactivate all tabs
+        tabLinks = document.getElementsByClassName('tab');
+        for (i = 0; i < tabLinks.length; i++) {
+            tabLinks[i].classList.remove('active');
+        }
+
+        // Show the selected tab content and activate the corresponding tab
+        document.getElementById(tabName + 'Tab').style.display = 'block';
+        event.currentTarget.classList.add('active');
+    }
+    function togglePopup(popupId) {
+        var popup = document.getElementById(popupId);
+        popup.style.display = (popup.style.display === 'none' || popup.style.display === '') ? 'block' : 'none';
+    }
+    
+    
+</script>
+
+
+</body>
+</html>
+{% endblock content %}
+

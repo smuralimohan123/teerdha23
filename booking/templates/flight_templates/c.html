@@ -1,0 +1,579 @@
+{% extends 'base.html' %}
+
+{% block flight %}
+
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+  
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flights Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js" integrity="sha512-xgIrH5DRuEOcZK5cPtVXx/WSp5DTir2JNcKE5ahV2u51NCTD9UDxbQgZHYHVBlPc4H8tug6BZTYIl2RdA/X0Vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <link rel="stylesheet" href="{% static 'CSS/Flights/c.css' %}">
+
+</head>
+<body >
+  <center>
+     <form method="post" class="mt-3">{% csrf_token %}  
+    <div class="navsearch-container">
+            <div class="app">
+                <div class="flight-search-form">
+                  <div class="labels">
+                  <input type="radio" id="oneWay" name="tripType" value="oneWay" checked>
+                  <label for="oneWay" id="one">One Way</label>
+                  <input type="radio" id="roundTrip" name="tripType" value="roundTrip">
+                  <label for="roundTrip" id="one">Round Trip</label>
+                  <label type="button"  id="one" onclick="myFunction()">Special fare</label>
+                  <br> 
+                  </div>
+                  
+                  <div id="myDIV" style="height: 0px; margin-left: 33\\px;" class="benefit-section">
+               
+                    <div class="benefits-container">
+                      <!-- <div class="highlighted-title mt-4">More Benefits</div> -->
+                      <div class="benefit-item" onclick="toggleCheckbox('studentBenefit')">
+                        <label>
+                          <input type="checkbox" id="studentBenefit" name="benefits">
+                          <span>
+                            <img src="https://th.bing.com/th?id=OIP.-W_ZAKPD_AG7aV_FvzS7_gHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2" alt="Student">
+                            Students
+                          </span>
+                        </label>
+                        <!-- <p class="benefit-description">Extra Baggage, Exclusive Discounts</p> -->
+                      </div>
+                      <div class="benefit-item" onclick="toggleCheckbox('seniorBenefit')">
+                        <label>
+                          <input type="checkbox" id="seniorBenefit" name="benefits">
+                          <span>
+                            <img src="https://th.bing.com/th/id/OIP.xv95FxE9n_7dHPeUrT4v5wHaIy?w=158&h=188&c=7&r=0&o=5&pid=1.7" alt="Senior Citizen">
+                            Senior Citizen
+                          </span>
+                        </label>
+                        <!-- <p class="benefit-description">Exclusive Discounts</p> -->
+                      </div>
+                      <div class="benefit-item" onclick="toggleCheckbox('armedForcesBenefit')">
+                        <label>
+                          <input type="checkbox" id="armedForcesBenefit" name="benefits">
+                          <span>
+                            <img src="https://gos3.ibcdn.com/defence-1687500960.png" alt="Armed Forces">
+                            Armed Forces
+                          </span>
+                        </label>
+                        <!-- <p class="benefit-description">Exclusive Discounts</p> -->
+                      </div>
+                      <div class="benefit-item" onclick="toggleCheckbox('doctorsBenefit')">
+                        <label>
+                          <input type="checkbox" id="doctorsBenefit" name="benefits">
+                          <span>
+                            <img src="https://gos3.ibcdn.com/doctorNurses-1687500975.png" alt="Doctors & Nurses">
+                            Doc & Nurses
+                          </span>
+                        </label>
+                        <!-- <p class="benefit-description">Exclusive Discounts</p> -->
+                      </div>
+                    </div>
+                  </div>           
+                  <form id="flightForm">
+                    <div class="form-row">
+                      <div class="form-group col-md-2">
+                        
+                        <div class="input-group">
+                          <input type="text" class="form-control" id="fromLocation" placeholder="From" style="border-radius: 8px;">
+                          &nbsp;
+                          <div class="input-group-append" >
+                            <span class="input-group-text swap-icon" id="swap"  style="z-index: 1; border-radius: 8px;">
+                              <i class="fas fa-exchange-alt" onclick="swapLocations()"></i>
+                            </span>
+                          </div>
+                        </div>  
+                      </div>
+                      <div class="form-group col-md-2">
+                        
+                        <input type="text" class="form-control" id="toLocation" placeholder="To">
+                      </div>
+                      <div class="form-dates">
+                      <div class="form-group col-md-6">
+                          <input type="text" class="form-control" id="departureDate" name="departureDate" placeholder="Departure Date" onfocus="(this.type='date')" onblur="(this.type='text')" onchange="this.placeholder=this.value">
+                        </div>
+                      <div class="form-group col-md-6" id="returnDateGroup">
+                      
+                        <input type="text" class="form-control" id="returnDate"  name="returnDate" disabled placeholder="Return Date" onfocus="(this.type='date')" onblur="(this.type='text')" onchange="this.placeholder=this.value">
+                      </div>
+                      </div>
+                      <div class="form-dates">
+                      <div class="form-group col-md-6">
+                        <input type="number" class="form-control" id="passengers" min="0" placeholder="No of Passengers">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <select name="cbclass" id="cbclass" class="form-control">
+                            <option value="Select">Cabin type</option>
+                            <option value="ECONOMY">ECONOMY</option>
+                            <option value="BUSINESS">BUSINESS</option>
+                            <option value="FIRST">FIRST</option>
+                        </select>
+                    </div>
+                  </div>
+                    </div>
+                  </form>       
+ 
+            
+                <script>
+                  function myFunction() {
+                    var x = document.getElementById("myDIV");
+                    if (x.style.height === "0px") {
+                      x.style.height = "30px";
+                      x.style.opacity="100%";
+                      x.style.transition="height 1s, opacity 1s"
+                    } else {
+                      x.style.height = "0px";
+                      x.style.opacity="0%"
+                    }
+                  }
+              
+
+                  function toggleCheckbox(id) {
+                        console.log('Toggle function called with ID:', id);
+                      }
+
+                </script>
+                
+              <!-- Button -->
+              <center><button type="submit" class="btn btn-primary-a">Search Flights</button></center>
+            </div>
+          
+            <script>
+              // JavaScript to restrict past dates for departure and set min for retuen accordingly
+              document.addEventListener('DOMContentLoaded', function() {
+                // Get today's date in YYYY-MM-DD format
+                var today = new Date().toISOString().split('T')[0];
+                document.getElementById('departureDate').setAttribute('min', today);
+                document.getElementById('returnDate').setAttribute('min', today);
+            
+                // Add event listener to Check-In date input
+                document.getElementById('departureDate').addEventListener('change', function() {
+                  var checkinDate = this.value;
+                  document.getElementById('returnDate').setAttribute('min', checkinDate);
+                });
+              });
+            </script>
+            
+            
+       
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+            <script>
+              // Ensure only one checkbox can be selected at a time
+              const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+              checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                  checkboxes.forEach(cb => {
+                    if (cb !== checkbox) {
+                      cb.checked = false;
+                    }
+                  });
+                });
+              });
+          
+              document.getElementById('oneWay').addEventListener('change', function() {
+                document.getElementById('returnDate').disabled = true;
+                document.getElementById('returnDate').value = '';
+              });
+              document.getElementById('roundTrip').addEventListener('change', function() {
+                document.getElementById('returnDate').disabled = false;
+              });
+              
+            
+            </script>
+          </div>
+        </div>  
+    </div>
+</form><br><br>
+    <h4>Trending Offers</h4><br>
+    
+<div class="container-card" style="max-width:1160px;margin: auto;padding: 20px;">
+    
+            <div class="custom-cards-container">
+                {% for i in res %}
+                <div class="custom-card card-{{ forloop.counter }}">
+                    <a href="{{ i.url }}" class="card-link"> 
+                    {% if i.image %}
+                    <img src="{{ i.image }}" class="card-img" height="200px" width="350px" id="img">
+                    {% endif %}</a>
+                    <!-- <div class="custom-card-content">
+                      
+                            <div class="title-card" id="title">{{ i.title }}</div> 
+                            <div class="description-card" id="content">{{ i.content }}</div>
+                        
+                            <input type="button" value="Book Now" class="btn btn-sm btn-primary w-20" style="margin-top: -10px;">
+                        </a>
+                    </div>
+                     -->
+                </div>
+                {% endfor %}
+            </div>
+          
+            <div class="fixed-carousel-nav">
+                <div class="carousel-nav prev" href="#cardcarousel" role="button" data-slide="prev">
+                    <span class="" style="border: 2px solid rgb(8, 95, 121); background-color: rgb(8, 95, 121); color: #fff; font-size: 20px; border-radius: 5px;" aria-hidden="true"><i class="bi bi-caret-left-fill"></i></span>
+                    <span class="sr-only">Previous</span>
+                </div>
+                <div class="carousel-nav next" href="#cardcarousel" role="button" data-slide="next">
+                    <span class="" style="border: 2px solid rgb(8, 95, 121);  background-color: rgb(8, 95, 121); color: #fff; font-size: 20px; border-radius: 5px;" aria-hidden="true"><i class="bi bi-caret-right-fill"></i></span>
+                    <span class="sr-only">Next</span>
+                </div>
+            </div>
+    
+    
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+        $('.benefit-item').animate({
+          scrollTop: $('.benefit-item').get(0).scrollHeight
+        }, 1500);
+            $(document).ready(function() {
+                var cardContainer = $(".custom-cards-container");
+                var cardWidth = cardContainer.find(".custom-card").outerWidth(true);
+                var totalWidth = cardWidth * $(".custom-card").length;
+                var animationDuration = 0; 
+                var intervalDelay = 3000; 
+                var autoScrollInterval; 
+      
+                function startAutoScroll() {
+                    autoScrollInterval = setInterval(function() {
+                        $(".next").click();
+                    }, intervalDelay);
+                }
+
+                
+      
+                function stopAutoScroll() {
+                    clearInterval(autoScrollInterval);
+                }
+      
+                $(".next").click(function() {
+                    cardContainer.stop().animate({
+                        scrollLeft: '+=' + cardWidth
+                    }, animationDuration, function() {
+                        if (cardContainer.scrollLeft() + cardContainer.width() >=8) {
+                            cardContainer.append($(".custom-card").first());
+                            cardContainer.scrollLeft(cardContainer.scrollLeft() - cardWidth);
+                        }
+                    });
+                });
+
+                
+      
+                $(".prev").click(function() {
+                    cardContainer.stop().animate({
+                        scrollLeft: '-=' + cardWidth
+                    }, animationDuration, function() {
+                        if (cardContainer.scrollLeft() <= 0) {
+                            cardContainer.prepend($(".custom-card").last());
+                            cardContainer.scrollLeft(cardContainer.scrollLeft() + cardWidth);
+                        }
+                    });
+                });
+      
+                $(".carousel-nav").hover(
+                    function() {
+                        stopAutoScroll();
+                    },
+                    function() {
+                        startAutoScroll();
+                    }
+                );
+      
+                startAutoScroll();
+          
+            });
+           
+   
+    $(document).ready(function() {
+    var autoScrollInterval;
+
+    function startAutoScroll() {
+        autoScrollInterval = setInterval(function() {
+            moveNext();
+        }, intervalDelay);
+    }
+
+    function stopAutoScroll() {
+        clearInterval(autoScrollInterval);
+    }
+
+    function moveNext() {
+        cardContainer.stop().animate({
+            scrollLeft: '+=' + cardWidth
+        }, animationDuration, function() {
+            if (cardContainer.scrollLeft() + cardContainer.width() >= 8) {
+                cardContainer.append($(".custom-card").first());
+                cardContainer.scrollLeft(cardContainer.scrollLeft() - cardWidth);
+            }
+        });
+    }
+
+    function movePrev() {
+        cardContainer.stop().animate({
+            scrollLeft: '-=' + cardWidth
+        }, animationDuration, function() {
+            if (cardContainer.scrollLeft() <= 0) {
+                cardContainer.prepend($(".custom-card").last());
+                cardContainer.scrollLeft(cardContainer.scrollLeft() + cardWidth);
+            }
+        });
+    }
+
+    function setupCarousel() {
+        if ($(window).width() < 767) { // Adjust this breakpoint as needed
+            // Disable carousel behavior for small screens
+            $(".custom-card").css("flex", "0 0 auto");
+            $(".custom-cards-container").css("overflow-x", "auto");
+            $(".carousel-nav").hide(); // Hide navigation buttons
+            stopAutoScroll(); // Stop auto-scrolling
+        } else {
+            // Enable carousel behavior for larger screens
+            $(".custom-card").css("flex", "0 0 32%");
+            $(".custom-cards-container").css("overflow-x", "hidden");
+            $(".carousel-nav").show(); // Show navigation buttons
+            startAutoScroll(); // Start auto-scrolling
+        }
+    }
+
+    // Handle window resize to adjust carousel behavior
+    $(window).on("resize", function() {
+        setupCarousel();
+    });
+
+    // Handle next button click
+    $(".next").click(function() {
+        moveNext();
+    });
+
+    // Handle previous button click
+    $(".prev").click(function() {
+        movePrev();
+    });
+
+    // Handle swipe gestures using touch events
+    var touchStartX = 0;
+    var touchEndX = 0;
+    $(".custom-cards-container").on("touchstart", function(event) {
+        touchStartX = event.originalEvent.touches[0].pageX;
+    });
+
+    $(".custom-cards-container").on("touchend", function(event) {
+        touchEndX = event.originalEvent.changedTouches[0].pageX;
+        var touchDiff = touchStartX - touchEndX;
+
+        if (touchDiff > 50) {
+            // Swiped left
+            moveNext();
+        } else if (touchDiff < -50) {
+            // Swiped right
+            movePrev();
+        }
+    });
+
+    // Start initial setup
+    setupCarousel();
+});
+
+
+            $(document).ready(function() {
+             
+          
+              function setupCarousel() {
+          cardWidth = $(".custom-card").outerWidth(true); // Update card width
+         if($(window).width() < 350){
+            $(".custom-card").css({
+                  "flex": "0 0 auto",
+                  "width": "calc(100%-10px)",
+                  
+              });
+              cardContainer.css();
+              $(".carousel-nav").hide(); // Hide navigation buttons
+              stopAutoScroll();
+         }
+
+          else if ($(window).width() < 600) {
+              // Adjust for small screens (e.g., mobile devices)
+              $(".custom-card").css({
+                  "flex": "0 0 auto",
+                  "width": "calc(100% - 10px)"
+              });
+              cardContainer.css();
+              $(".carousel-nav").hide(); // Hide navigation buttons
+              stopAutoScroll(); // Stop auto-scrolling
+          }else if($(window).width() < 767){
+            $(".custom-card").css({
+                  "flex": "0 0 auto",
+                  "width": "calc(33% - 10px)",
+              });
+              cardContainer.css();
+              $(".carousel-nav").hide(); // Hide navigation buttons
+              stopAutoScroll();
+         }
+           else if($(window).width() > 767) {
+            
+            cardContainer.css();
+              // Adjust for larger screens
+              $(".carousel-nav").show(); // Show navigation buttons
+              startAutoScroll(); // Start auto-scrolling
+          }
+      }
+
+
+          
+              // Handle window resize to adjust carousel behavior
+              $(window).on("resize", function() {
+                  setupCarousel();
+              });
+          
+             
+          });
+          
+          </script>
+          
+   
+      </div>
+    </center>
+      <br> 
+      
+
+<br>
+<center>
+<div class="container-flight" ><br>
+
+<h4 style="color: rgb(166, 223, 53);">Why 'TEERDHA' for flight bookings?</h4><br>
+
+{% for i in k %}
+    <div class="container-why mt-3" style=" border-radius: 10px;width:75% ;justify-content: center;"> 
+        <div class="row text-left" style="flex-direction: column;">
+            <h5 id="op"><b>{{ i.question }}</b></h5>
+                        {% if forloop.counter == 12 %}
+              
+                <p >{{ i.answer}}</p>
+            {% else %}
+                <p>{{ i.answer }}</p>
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}
+<br><br><br>
+</div>
+</center> 
+<br><br>
+
+<div class="container" style="width: 100%;justify-content: center; align-items: center; font-weight: bold;">
+    <h4><center>FAQ's on Flights</center></h4><br><br>
+    
+    <div class="faq-section" >
+        {% for i in k3 %}
+        <div class="row question" onclick="toggleAnswer('{{ i.id }}')"> 
+            <div class="col-10 text-left h6" style="color:black; font-weight: bold;">                       
+                {{ i.question }}
+            </div>
+            <div class="col text-right" >
+                <i class="text-right fa fa-angle-down" style="font-size:20px"></i>
+            </div>
+            <div class="answer h6" id="answer{{i.id}}" style='color:rgb(87, 83, 83); text-align: justify; padding: 20px;'>
+                {{ i.answer }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    <script>
+        function toggleAnswer(id) {
+            var answer = document.getElementById("answer" + id);
+            var arrow = document.querySelector("#answer" + id + " + .question .fa-angle-down");
+
+            if (answer.style.display === "block") {
+                answer.style.display = "none";
+                arrow.style.transform = "rotate(0deg)";
+            } else {
+                answer.style.display = "block";
+                arrow.style.transform = "rotate(180deg)";
+            }
+        }
+    </script>
+
+
+</div> 
+       
+
+<script>
+    $('#cardcarousel').carousel({
+        infinite: true,
+          loop:true,
+  interval: 8000
+})
+
+$('.carousel .carousel-item').each(function(){
+    var minPerSlide = 3;
+    var next = $(this).next();
+    if (!next.length) {
+    next = $(this).siblings(':first');
+    }
+    next.children(':first-child').clone().appendTo($(this));
+    
+    for (var i=0;i<minPerSlide;i++) {
+        next=next.next();
+        if (!next.length) {
+        	next = $(this).siblings(':first');
+      	}
+        
+        next.children(':first-child').clone().appendTo($(this));
+      }
+});
+
+
+// search bar script
+
+        function toggleReturnDate() {
+            var rtDate = document.getElementById('rtdate');
+            var twoWayRadio = document.getElementById('two_way');
+            rtDate.disabled = !twoWayRadio.checked;
+        }
+        function swapLocations() {
+                  var fromLocation = document.getElementById('fromLocation');
+                  var toLocation = document.getElementById('toLocation');
+
+                  // Swap values
+                  var temp = fromLocation.value;
+                  fromLocation.value = toLocation.value;
+                  toLocation.value = temp;
+                }
+
+</script> 
+  
+
+<br><br><br>
+ 
+
+
+</body>
+{% endblock %}
+</html>
+
+
+

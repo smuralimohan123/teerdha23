@@ -1,0 +1,1494 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!----======== CSS ======== -->
+
+    <link rel="stylesheet" href="{% static 'CSS/dashboard/admin.css' %}">
+
+    
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS, Popper.js, and jQuery (required for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+
+     
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <title>Admin Dashboard Panel</title> 
+    <style>
+        /* ===== Google Font Import - Poppins ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root{
+    /* ===== Colors ===== */
+    --primary-color: #0E4BF1;
+    --panel-color: #FFF;
+    --text-color: #000;
+    --black-light-color: #707070;
+    --border-color: #e6e5e5;
+    --toggle-color: #DDD;
+    --box1-color: #4DA3FF;
+    --box2-color: #FFE6AC;
+    --box3-color: #E7D1FC;
+    --title-icon-color: #fff;
+    
+    /* ====== Transition ====== */
+    --tran-05: all 0.5s ease;
+    --tran-03: all 0.3s ease;
+    --tran-03: all 0.2s ease;
+}
+
+body{
+    min-height: 100vh;
+    /* background-color: var(--primary-color); */
+}
+
+
+body.dark .sidebar ul li a:hover {
+            background-color:black;
+        }
+
+body.dark{
+    --primary-color: #3A3B3C;
+    --panel-color: #1a1a1a;
+    --text-color: #CCC;
+    --black-light-color: #CCC;
+    --border-color: #4D4C4C;
+    --toggle-color: #FFF;
+    --box1-color: #3A3B3C;
+    --box2-color: #3A3B3C;
+    --box3-color: #3A3B3C;
+    --title-icon-color: #CCC;
+}
+/* === Custom Scroll Bar CSS === */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0b3cc1;
+}
+
+body.dark::-webkit-scrollbar-thumb:hover,
+body.dark .activity-data::-webkit-scrollbar-thumb:hover{
+    background: #3A3B3C;
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding: 10px 14px;
+    background-color: var(--panel-color);
+    border-right: 1px solid var(--border-color);
+    transition: var(--tran-05);
+}
+nav.close{
+    width: 73px;
+    margin-top: -10px;
+}
+nav .logo-name{
+    display: flex;
+    align-items: center;
+}
+nav .logo-image{
+    display: flex;
+    justify-content: center;
+    min-width: 45px;
+}
+nav .logo-image img{
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+nav .logo-name .logo_name{
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-left: 14px;
+    transition: var(--tran-05);
+}
+nav.close .logo_name{
+    opacity: 0;
+    pointer-events: none;
+}
+nav .menu-items{
+    margin-top: 40px;
+    height: calc(100% - 90px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.menu-items li{
+    list-style: none;
+}
+.menu-items li a{
+    display: flex;
+    align-items: center;
+    height: 20px;/*changess*/
+    text-decoration: none;
+    position: relative;
+}
+.nav-links li a:hover:before{
+    content: "";
+    position: absolute;
+    left: -7px;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+body.dark li a:hover:before{
+    background-color: var(--text-color);
+}
+.menu-items li a i{
+    font-size: 24px;
+    min-width: 45px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    color: var(--black-light-color);
+    margin-left: -21px;
+}
+.menu-items li a .link-name{
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--black-light-color);    
+    transition: var(--tran-05);
+}
+nav.close li a .link-name{
+    opacity: 0;
+    pointer-events: none;
+}
+/* .nav-links li a:hover i,
+.nav-links li a:hover .link-name{
+    color: var(--primary-color);
+} */
+body.dark .nav-links li a:hover i,
+body.dark .nav-links li a:hover .link-name{
+    color: var(--text-color);
+}
+/* .menu-items .logout-mode{
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
+} */
+.menu-items .mode{
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+.menu-items .mode-toggle{
+    position: absolute;
+    right: 14px;
+    height: 50px;
+    min-width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.mode-toggle .switch{
+    position: relative;
+    display: inline-block;
+    height: 22px;
+    width: 40px;
+    border-radius: 25px;
+    background-color: var(--toggle-color);
+}
+.switch:before{
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 15px;
+    width: 15px;
+    background-color: var(--panel-color);
+    border-radius: 50%;
+    transition: var(--tran-03);
+}
+body.dark .switch:before{
+    left: 20px;
+}
+
+.dashboard{
+    position: relative;
+    left: 250px;
+    background-color: var(--panel-color);
+    min-height: 100vh;
+    width: calc(100% - 250px);
+    padding: 10px 14px;
+    transition: var(--tran-05);
+}
+nav.close ~ .dashboard{
+    left: 73px;
+    width: calc(100% - 73px);
+}
+.dashboard .top{
+    position: fixed;
+    top: 0;
+    left: 250px;
+    display: flex;
+    width: calc(100% - 250px);
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background-color: var(--panel-color);
+    transition: var(--tran-05);
+    z-index: 10;
+}
+nav.close ~ .dashboard .top{
+    left: 73px;
+    width: calc(100% - 73px);
+}
+.dashboard .top .sidebar-toggle{
+    font-size: 26px;
+    color: var(--text-color);
+    cursor: pointer;
+}
+.dashboard .top .search-box{
+    position: relative;
+    height: 45px;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 30px;
+}
+.top .search-box input{
+    position: absolute;
+    border: 1px solid var(--border-color);
+    background-color: var(--panel-color);
+    padding: 0 25px 0 50px;
+    border-radius: 5px;
+    height: 100%;
+    width: 100%;
+    color: var(--text-color);
+    font-size: 15px;
+    font-weight: 400;
+    outline: none;
+}
+.top .search-box i{
+    position: absolute;
+    left: 15px;
+    font-size: 22px;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--black-light-color);
+}
+.top img{
+    width: 40px;
+    border-radius: 50%;
+}
+.dashboard .dash-content{
+    padding-top: 50px;
+}
+.dash-content .title{
+    display: flex;
+    align-items: center;
+    margin: 60px 0 30px 0;
+}
+.dash-content .title i{
+    position: relative;
+    height: 35px;
+    width: 35px;
+    background-color: var(--primary-color);
+    border-radius: 6px;
+    color: var(--title-icon-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+.dash-content .title .text{
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-left: 10px;
+}
+.dash-content .boxes{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.dash-content .boxes .box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    width: calc(100% / 4 - 16px);
+    padding: 25px 10px;
+    background-color: var(--box1-color);
+    transition: var(--tran-05);
+}
+.boxes .box i{
+    font-size: 35px;
+    color: var(--text-color);
+}
+.boxes .box .text{
+    white-space: nowrap;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+.boxes .box .number{
+    font-size: 40px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+.boxes .box.box2{
+    background-color: var(--box2-color);
+}
+.boxes .box.box3{
+    background-color: var(--box3-color);
+}
+/* .boxes .box.box4{
+    background-color: var(--box4-color);
+} */
+.dash-content .activity .activity-data{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.activity .activity-data{
+    display: flex;
+}
+.activity-data .data{
+    display: flex;
+    flex-direction: column;
+    margin: 0 15px;
+}
+.activity-data .data-title{
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+.activity-data .data .data-list{
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 20px;
+    white-space: nowrap;
+    color: var(--text-color);
+}
+
+
+
+@media (max-width: 1000px) {
+    nav{
+        width: 73px;
+    }
+    nav.close{
+        width: 250px;
+    }
+    nav .logo_name{
+        opacity: 0;
+        pointer-events: none;
+    }
+    nav.close .logo_name{
+        opacity: 1;
+        pointer-events: auto;
+    }
+    nav li a .link-name{
+        opacity: 0;
+        pointer-events: none;
+    }
+    nav.close li a .link-name{
+        opacity: 1;
+        pointer-events: auto;
+    }
+    nav ~ .dashboard{
+        left: 73px;
+        width: calc(100% - 73px);
+    }
+    nav.close ~ .dashboard{
+        left: 250px;
+        width: calc(100% - 250px);
+    }
+    nav ~ .dashboard .top{
+        left: 73px;
+        width: calc(100% - 73px);
+    }
+    nav.close ~ .dashboard .top{
+        left: 250px;
+        width: calc(100% - 250px);
+    }
+    .activity .activity-data{
+        overflow-X: scroll;
+    }
+}
+
+@media (max-width: 780px) {
+    .dash-content .boxes .box{
+        width: calc(100% / 2 - 15px);
+        margin-top: 15px;
+    }
+}
+@media (max-width: 560px) {
+    .dash-content .boxes .box{
+        width: 100% ;
+    }
+}
+@media (max-width: 400px) {
+    nav{
+        width: 0px;
+    }
+    nav.close{
+        width: 73px;
+    }
+    nav .logo_name{
+        opacity: 0;
+        pointer-events: none;
+    }
+    nav.close .logo_name{
+        opacity: 0;
+        pointer-events: none;
+    }
+    nav li a .link-name{
+        opacity: 0;
+        pointer-events: none;
+    }
+    nav.close li a .link-name{
+        opacity: 0;
+        pointer-events: none;
+    }
+    nav ~ .dashboard{
+        left: 0;
+        width: 100%;
+    }
+    nav.close ~ .dashboard{
+        left: 73px;
+        width: calc(100% - 73px);
+    }
+    nav ~ .dashboard .top{
+        left: 0;
+        width: 100%;
+    }
+    nav.close ~ .dashboard .top{
+        left: 0;
+        width: 100%;
+    }
+}
+
+.pl{
+      padding-left: 10px;
+      color: orange;
+}
+    </style>
+     <style>
+    
+        .sidebar {
+            width: 250px;
+            /* background-color: #f0f0f0;  changes*/ 
+            padding: 10px;
+            position: fixed;
+            height: 100%;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 8px 0;
+        }
+        .sidebar ul li a {
+            display: block;
+            text-decoration: none;
+            color: black;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        .sidebar ul li a:hover {
+            background-color: #e0e0e0;
+        }
+        .sidebar ul li ul {
+            display: none;
+            list-style-type: none;
+            padding-left: 15px;
+        }
+        .sidebar ul li.active ul {
+            display: block;
+        }
+        /* Adjustments to swap sub.title and sub.icon */
+.sidebar .nav-item.parent a {
+    display: flex;
+    align-items: center;
+    padding: 10px; /* Adjust padding as needed */
+    font-size: small;
+    color: var(--black-light-color);
+}
+
+.sidebar .nav-item.parent a i {
+    margin-right: 10px; /* Space between icon and title */
+}
+
+.sidebar .nav-item.parent a .link-name {
+    order: 1; /* Ensure title appears after icon */
+}
+
+.sidebar .nav-item.parent a i {
+    order: 0; /* Ensure icon appears before title */
+}
+
+
+
+/* Styling for the overlay */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    z-index: 1;
+}
+    
+/* Styling for the pop-up box */
+.popup {
+    display: none; /* Initially hidden */
+    background-color: rgb(255, 230, 255);
+    padding: 20px;
+    width: 300px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    z-index: 2;
+    text-align: center;
+}
+
+/* Styling for the close button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 25px;
+}
+label{
+    font-family: 'poppins';
+    font-size: 15px;
+}
+.form{
+    padding: 15px;
+}
+.input-box{
+    border-width: 1px;
+    border-color: #707070;
+    height: 25px;
+
+}
+.form-button{
+    padding: 8px;
+    font-family: 'poppins';
+    background-color: #0126fd;
+    border-width: 0px;
+    border-radius: 6px;
+    color: white;
+
+}
+.overlay1{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    z-index: 1;
+}
+
+.modal-backdrop{
+                display: none;
+            }
+/* Styling for the pop-up box */
+.resetpopup {
+    display: none; /* Initially hidden */
+    background-color: #fce4e4;
+    padding: 5px;
+    margin: 20px;
+    margin-bottom: 10px;
+    width: 400px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    z-index: 2;
+    text-align: center;
+}
+
+
+/* Style for the ul.nav */
+ul.nav {
+    background-color: #f8f9fa; /* Background color */
+    padding: 5px; /* Padding around the ul */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+}
+.nav{
+    display: block;
+}
+/* Style for the li.nav-item */
+ul.nav .nav-item {
+    list-style-type: none; /* Remove default list styling */
+    margin-right: 10px; /* Margin between list items */
+}
+
+/* Style for the a.nav-link */
+ul.nav .nav-link {
+    display: block; /* Display as block element */
+    padding: 10px 15px; /* Padding inside each link */
+    color: #333; /* Text color */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+/* Hover effect for the a.nav-link */
+ul.nav .nav-link:hover {
+    background-color: #e9ecef; /* Hover background color */
+}
+
+/* Style for the dropdown menu */
+ul.nav .dropdown-menu {
+    display: none; /* Hide dropdown menu by default */
+    position: absolute; /* Position absolutely */
+    background-color: #fff; /* Background color */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Box shadow for dropdown */
+    z-index: 1000; /* Ensure dropdown is above other content */
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+    border-radius: 5px; /* Rounded corners */
+}
+
+
+/* Style for dropdown items */
+ul.nav .dropdown-item {
+    display: block; /* Display as block element */
+    padding: 8px 15px; /* Padding inside each dropdown item */
+    color: #333; /* Text color */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+/* Hover effect for dropdown items */
+ul.nav .dropdown-item:hover {
+    background-color: #e9ecef; /* Hover background color */
+    border-radius: 5px; /* Rounded corners */
+}
+
+
+/* #profileDropdown{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 40px;
+} */
+
+    </style>
+<style>
+            .modal-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5); /* Dark semi-transparent background */
+                z-index: 1040; /* Behind the modal but above other content */
+            }
+            .modal-content{
+                height: 100%;
+                border: none;
+                
+            }
+            .flex-column{
+                flex:1;
+            }
+            .tab-content{
+                flex: 3;
+            }
+            .container{
+                flex: auto;
+                max-width: 700px;
+                max-height: 500px;
+            }
+            .modal {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: #fff;
+                border-radius: 0.5rem;
+                /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
+                z-index: 1050; /* Above the overlay */
+                max-width: 700px;
+                max-height: 500px;
+                overflow: auto;
+            }
+        
+            .modal-dialog {
+                margin: 0;
+                max-width: 100%;
+                height: 100%;
+            }
+        
+            .modal-header,
+            .modal-body,
+            .modal-footer {
+                padding: 1rem;
+            }
+        
+            .btn-close {
+                background: none;
+                border: none;
+                font-size: 1.25rem;
+                cursor: pointer;
+            }
+        </style>
+    <style>
+        /* Your custom styles */
+    
+        
+
+        body {
+            background-color: #f9f9fa;
+        }
+
+        .padding {
+            padding: 3rem !important;
+        }
+
+        .user-card-full {
+            overflow: hidden;
+        }
+
+        .card {
+            border-radius: 5px;
+            -webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+            box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+            border: none;
+            margin-bottom: 30px;
+           
+        }
+        .card-body{
+            max-width: 300px;   
+            width: 100%;
+        }
+
+        .m-r-0 {
+            margin-right: 0px;
+        }
+
+        .m-l-0 {
+            margin-left: 0px;
+        }
+
+        .user-card-full .user-profile {
+            border-radius: 5px 0 0 5px;
+        }
+
+        .bg-c-lite-green {
+            background: -webkit-gradient(linear, left top, right top, from(#f29263), to(#ee5a6f));
+            background: linear-gradient(to right, #ee5a6f, #f29263);
+        }
+
+        .user-profile {
+            padding: 20px 0;
+        }
+
+        .card-block {
+            padding: 1.25rem;
+        }
+
+        .m-b-25 {
+            margin-bottom: 10px;
+        }
+
+        /* label.image-edit {
+            display: block;
+            background-color: seashell;
+            padding: 0em 3em;
+            height: max-content;
+            width: 100px;
+        } */
+    
+        .img-radius {
+            border-radius: 10px;
+        }
+
+        h6 {
+            font-size: 14px;
+        }
+
+        .card .card-block p {
+            line-height: 20px;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        @media only screen and (min-width: 1400px) {
+            p {
+                font-size: 14px;
+            }
+        }
+
+        .card-block {
+            padding: 1.25rem;
+        }
+
+        .b-b-default {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .m-b-20 {
+            margin-bottom: 20px;
+        }
+
+        .p-b-5 {
+            padding-bottom: 5px !important;
+        }
+
+        .card .card-block p {
+            line-height: 25px;
+        }
+
+        .text-muted {
+            color: #919aa3 !important;
+        }
+
+        .b-b-default {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .f-w-600 {
+            font-weight: 600;
+        }
+
+        .m-b-20 {
+            margin-bottom: 20px;
+        }
+
+        .m-t-40 {
+            margin-top: 20px;
+        }
+
+        .p-b-5 {
+            padding-bottom: 5px !important;
+        }
+
+        .m-b-10 {
+            margin-bottom: 10px;
+        }
+
+        .col-sm-6 {
+            margin-bottom: 10px;
+        }
+
+        .m-t-40 {
+            margin-top: 20px;
+        }
+
+        .user-card-full .social-link li {
+            display: inline-block;
+        }
+
+        .user-card-full .social-link li a {
+            font-size: 20px;
+            margin: 0 10px 0 0;
+            -webkit-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+        }
+        .yogesh{
+            margin: 1px;
+        }
+      .reecha{
+        margin: 1px;
+      }
+      .ree{
+        margin: 1px;
+        padding: 4px 0px 4px 0px;
+      }
+      #profile{
+        
+        width: 100%;
+       
+    }
+    body.dark #drop{
+    background-color: #000;
+    border: 1px solid #fff;
+  }
+ 
+    </style>
+    
+    
+    <script>
+        if (performance.navigation.type === 2) {
+            alert("You cannot access the dashboard after logging out. Please log in again.");
+            window.location.href = "{% url 'login' %}";
+        }
+    </script>
+    
+     
+</head>
+<body>
+    <nav>
+
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="https://tse4.mm.bing.net/th?id=OIP.U0SfqHcCr4A3TEW4cIDGOQHaEI&pid=Api&P=0&h=220" alt="">
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;
+            
+            <!-- <span class="link-name-user" style="font-size: x-large;color: var(--black-light-color);font-style: italic;">{{ user.username }}</span> -->
+
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li> <div class="mode">
+                    <a href="/dashboard" class="dropbtn">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name">Dashboard</span>
+                    </a></div>
+                </li>
+
+
+                <div class="sidebar" style="margin-left: -21px;">
+                    <ul>
+                        {% for sub in nav_item %}
+                        <li class="nav-item parent">
+                            <a href="#" style="font-size: 17px;color: var(--black-light-color)">
+                                <i class="{{ sub.icon }}"></i> <!-- Icon here -->
+                                {{ sub.title }}
+                            </a>
+                            <ul>
+                                {% for i in Sidebar %}
+                                {% if sub.title == i.subdivision %}
+                                <li class="nav-item">
+                                    <a href="{{ i.url }}">{{ i.title }}</a>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
+            </ul>
+
+                <script>
+                    document.querySelectorAll('.sidebar .parent > a').forEach(function(parentLink) {
+                        parentLink.addEventListener('click', function(event) {
+                            event.preventDefault();
+                            let parentLi = this.parentNode;
+                            parentLi.classList.toggle('active');
+                            
+                            
+                            document.querySelectorAll('.sidebar .parent').forEach(function(otherLi) {
+                                if (otherLi !== parentLi) {
+                                    otherLi.classList.remove('active');
+                                }
+                            });
+                        });
+                    });
+                </script> 
+            
+            <ul class="logout-mode">
+                <li><a href="/login">
+                    <i class="uil uil-signout" style="padding-bottom: 35px;"></i>
+                    <span class="link-name" style="padding-bottom: 32px;">Logout</span>
+                </a></li>
+
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                    <span class="link-name">Dark Mode</span>
+                </a>
+
+                <div class="mode-toggle">
+                  <span class="switch"></span>
+                </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const flightsDropdown = document.getElementById("flightsDropdown");
+    const busesDropdown = document.getElementById("busesDropdown");
+    const cabsDropdown = document.getElementById("cabsDropdown");
+    const hotelsDropdown = document.getElementById("hotelsDropdown");
+
+    // Toggle visibility function
+    function toggleVisibility(dropdown) {
+        const dropdownContent = dropdown.querySelector(".dropdown-content");
+        dropdownContent.style.display = dropdownContent.style.display === "none" ? "block" : "none";
+    }
+
+    // Hide dropdown content by default
+    [flightsDropdown, busesDropdown, cabsDropdown, hotelsDropdown].forEach(dropdown => {
+        const dropdownContent = dropdown.querySelector(".dropdown-content");
+        dropdownContent.style.display = "none";
+    });
+
+    // Event listeners for dropdowns
+    flightsDropdown.addEventListener("click", function(event) {
+        event.stopPropagation();
+        toggleVisibility(flightsDropdown);
+    });
+
+    busesDropdown.addEventListener("click", function(event) {
+        event.stopPropagation();
+        toggleVisibility(busesDropdown);
+    });
+
+    cabsDropdown.addEventListener("click", function(event) {
+        event.stopPropagation();
+        toggleVisibility(cabsDropdown);
+    });
+
+    hotelsDropdown.addEventListener("click", function(event) {
+        event.stopPropagation();
+        toggleVisibility(hotelsDropdown);
+    });
+
+    // Close dropdown content when clicking outside the dropdown
+    document.addEventListener("click", function(event) {
+        [flightsDropdown, busesDropdown, cabsDropdown, hotelsDropdown].forEach(dropdown => {
+            const dropdownContent = dropdown.querySelector(".dropdown-content");
+            if (!dropdown.contains(event.target)) {
+                dropdownContent.style.display = "none";
+            }
+        });
+    });
+});
+
+</script>
+
+
+{% block main_content %}
+<section class="dashboard">
+    <div class="top">
+        <i class="uil uil-bars sidebar-toggle"></i>
+
+        <div class="search-box">
+            <i class="uil uil-search"></i>
+            <input type="text" placeholder="Search here...">
+        </div>
+        
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="{{profile.image.url}}" alt="Profile Picture" class="profile-picture" id="profile-picture"></i>&nbsp;{{user.username}}
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" id="profile-btn" href="#"><i class="bi bi-gear"></i> My Profile</a></li>
+                <li><a class="dropdown-item" id="resetpassword" href="#"><i class="bi bi-envelope"></i> Reset Password</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" id="logout" href="javascript:void(0);" onclick="confirmLogout()"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+            </ul>
+        </div>
+        
+    </div>
+
+    <div class="dash-content">
+        <div class="overview">
+            <div class="title">
+                <i class="uil uil-tachometer-fast-alt"></i>
+                <span class="text">Dashboard</span>
+            </div>
+
+            <div class="boxes">
+                <div class="box box1">
+                    <i class="bi bi-airplane-fill"></i>
+                    <span class="text">Flights</span>
+                </div>
+                <div class="box box2">
+                    <i class="bi bi-bus-front-fill"></i>
+                    <span class="text">Buses</span>
+                </div>
+                <div class="box box3">
+                    <i class="bi bi-taxi-front-fill"></i>
+                    <span class="text">Cabs</span>
+                </div>
+                <div class="box box4">
+                    <i class="bi bi-buildings-fill"></i>
+                    <span class="text">Hotels</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock main_content %}
+
+ <!-- Overlay -->
+ <div class="modal-overlay" id="modal-overlay" style="display: none;"></div>
+
+ <!-- Update Profile Modal -->
+ <div class="modal" id="updateProfileModal" style="display: none;">
+     <div class="modal-dialog modal-lg">
+         <div class="modal-content">
+            <div class="container"><br><br>
+
+                <div class="d-flex align-items-start">
+                    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <button class="nav-link active" id="profile-tab" data-bs-toggle="pill" data-bs-target="#profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="true">My Profile</button>
+                        <button class="nav-link" id="password-tab" data-bs-toggle="pill" data-bs-target="#v-pills-password" type="button" role="tab" aria-controls="v-pills-password" aria-selected="false">Reset password</button>
+                        <button class="nav-link" id="v-pills-logout-tab" data-bs-toggle="pill" data-bs-target="#v-pills-logout" type="button" role="tab" aria-controls="v-pills-logout" aria-selected="false">Logout</button>
+                    </div>
+            
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                            <div class="profile-container" id="profile-container" >
+                                <img src="{{profile.image.url}}" alt="Profile Picture" class="profile-picture" id="profile-picture" style="width: 125px; height: 125px;"><br><br>
+            
+                                <h5 class="ree">Name: {{ profile.user.username }} </h5>
+                                <p class="yogesh">Email: {{ profile.email }} </p>
+                                <p class="reecha">Mob no: {{ profile.mobile_number }} </p><br>
+                                <button class="btn btn-primary" id="update-profile-btn" type="button">Update Profile</button>
+                            </div>
+                        </div>
+            
+                            <div class="tab-pane fade" id="v-pills-password" role="tabpanel" aria-labelledby="v-pills-password-tab">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Reset Password</h4>
+                                        <form name="reset_password" id="updatepasswordForm" method="post" enctype="multipart/form-data"> {% csrf_token %}
+                                            <div class="mb-3">
+                                                <label for="current-password" class="form-label">Current Password</label>
+                                                <input type="password" class="form-control" id="current-password" name="current_password" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="new-password" class="form-label">New Password</label>
+                                                <input type="password" class="form-control" id="new-password" name="new_password" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="confirm-password" class="form-label">Confirm New Password</label>
+                                                <input type="password" class="form-control" id="confirm-password" name="confirm_password" required>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Reset Password</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        <div class="tab-pane fade" id="v-pills-Manage" role="tabpanel" aria-labelledby="v-pills-Manage-tab">
+
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-logout" role="tabpanel" aria-labelledby="v-pills-logout-tab">
+                            <a class="dropdown-item" id="logout" href="javascript:void(0);" onclick="confirmLogout()"><i class="bi bi-box-arrow-right"></i>Click here to logout</a></li>
+
+                        </div>
+                    </div>
+                </div><br><br>
+            </div>
+         </div>
+     </div>
+ </div>
+<!-- Bootstrap JS, Popper.js, and jQuery (required for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script>
+    function confirmLogout() {
+        // Show a confirmation dialog
+        if (confirm("Are you sure you want to logout?")) {
+            // If confirmed, redirect to the logout URL
+            window.location.href = "/login";
+        }
+        // If canceled, do nothing
+    }
+</script>
+
+    <!-- <script src="script.js"></script> -->
+    <script>
+        const body = document.querySelector("body"),
+      modeToggle = body.querySelector(".mode-toggle");
+      sidebar = body.querySelector("nav");
+      sidebarToggle = body.querySelector(".sidebar-toggle");
+
+let getMode = localStorage.getItem("mode");
+if(getMode && getMode ==="dark"){
+    body.classList.toggle("dark");
+}
+
+let getStatus = localStorage.getItem("status");
+if(getStatus && getStatus ==="close"){
+    sidebar.classList.toggle("close");
+}
+
+modeToggle.addEventListener("click", () =>{
+    body.classList.toggle("dark");
+    if(body.classList.contains("dark")){
+        localStorage.setItem("mode", "dark");
+    }else{
+        localStorage.setItem("mode", "light");
+    }
+});
+
+sidebarToggle.addEventListener("click", () => {
+    sidebar.classList.toggle("close");
+    if(sidebar.classList.contains("close")){
+        localStorage.setItem("status", "close");
+    }else{
+        localStorage.setItem("status", "open");
+    }
+})
+    </script>
+
+<script>
+    // Get the modal and overlay
+    var modal = document.getElementById('updateProfileModal');
+    var overlay = document.getElementById('modal-overlay');
+    
+    // Get the button that opens the modal
+    var btn = document.getElementById('profile-btn');
+    var pbtn = document.getElementById('resetpassword');
+    var lbtn = document.getElementById('logoutt');
+
+
+    var password_tab=document.getElementById('password-tab');
+    var profile_tab=document.getElementById('profile-tab');
+    var password_v=document.getElementById('v-pills-password');
+    var profile_v=document.getElementById('profile');
+    
+    var logout_tab=document.getElementById('v-pills-logout-tab');
+    var logout_v=document.getElementById('v-pills-logout');
+
+    var all_tabs=document.querySelectorAll('#password-tab','#profile-tab','#manage-tab');
+    var all_v=document.querySelectorAll('#profile','#v-pills-password','#v-pills-manage');
+    // Get the buttons that close the modal
+    var closeBtns = document.querySelectorAll('#close-modal-btn, #modal-overlay');
+    
+    // When the user clicks the button, open the modal and overlay
+    
+    btn.onclick = function() {
+        modal.style.display = 'block';
+        overlay.style.display = 'block';
+
+        profile_tab.classList.add('active');
+        profile_v.classList.add('active');
+        profile_v.classList.add('show');
+        profile_tab.ariaSelected='true';
+
+        password_tab.classList.remove('active');
+        password_v.classList.remove('active');
+        password_v.classList.remove('show');
+        password_tab.ariaSelected='false';
+
+
+        logout_tab.classList.remove('active');
+        logout_v.classList.remove('active');
+        logout_v.classList.remove('show');
+        logout_tab.ariaSelected='false';
+    }
+    pbtn.onclick=function(){
+        modal.style.display = 'block';
+        overlay.style.display = 'block';
+
+        profile_tab.classList.remove('active');
+        profile_v.classList.remove('active');
+        profile_v.classList.remove('show');
+        profile_tab.ariaSelected='false';
+
+        password_tab.classList.add('active');
+        password_v.classList.add('active');
+        password_v.classList.add('show');
+        password_tab.ariaSelected='true';
+
+
+        logout_tab.classList.remove('active');
+        logout_v.classList.remove('active');
+        logout_v.classList.remove('show');
+        logout_tab.ariaSelected='false';
+    }
+   
+    
+    // When the user clicks on any close button, close the modal and overlay
+    closeBtns.forEach(function(btn) {
+        btn.onclick = function() {
+            modal.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+    });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == overlay) {
+            modal.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+    }
+</script>
+
+<script>
+    document.getElementById('update-profile-btn').addEventListener('click', function() {
+        const profileContainer = document.getElementById('profile-container');
+        profileContainer.innerHTML = `
+            <div class="card user-card-full" id="update-container" >
+                 <form method="post" enctype="multipart/form-data"> {% csrf_token %}
+                <div class="row m-l-0 m-r-0">
+                    <div class="col-sm-4 bg-c-lite-green user-profile">
+                        <div class="card-block text-center text-white">
+                            <div class="m-b-25">
+                                <img src="{{profile.image.url}}" alt="Previous Image" class="img-fluid rounded" id="previous-image" style="width: 125px; height:125px;">
+                                <input accept="image/*" style="display: none;" name="image" id="uploadImage" type="file" onchange="document.getElementById('previous-image').src = window.URL.createObjectURL(this.files[0])"><br><br>
+                                <div class="editPic" >
+                                    <label for="uploadImage" class="image-edit" style=" font-size: 25px; color: black; "><i class="uil uil-image-edit" "></i></label>
+                                </div>
+                            </div>
+                            <h3 class="f-w-600"> {{ profile.user.username }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="card-block">
+                            <h4 class="m-b-20 m-t-5 p-b-5 b-b-default f-w-600">Information</h4>
+                            <div class="col">
+                                <div class="col-sm-12">
+                                    <p class="mb-0 py-2 f-w-600">Email:</p>
+                                    <input type="email" name="email" id="email" value="{{ profile.email }}" class="form-control" required>
+                                </div>
+                                <div class="col-sm-12">
+                                    <p class="mb-0 py-2 f-w-600">Mobile Number:</p>
+                                    <input type="tel" name="mobile_number" id="mobile_number" pattern="[0-9]{10}" value="{{ profile.mobile_number }}" class="form-control" required>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid 10-digit phone number.
+                                    </div>
+                                </div>
+                            </div><br>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" id="cancel-update-btn">Cancel</button>
+                                <button class="btn btn-primary" type="submit">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        `;
+
+        // Initialize form validation
+        Array.from(document.querySelectorAll('form')).forEach((form) => {
+            form.addEventListener('submit', function(event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    });
+
+    document.addEventListener('click', function(event) {
+        if (event.target && event.target.id === 'cancel-update-btn') {
+            location.reload(); // Reload the page to return to the original profile view
+        }
+    });
+</script>
+<script>
+    document.querySelector('#v-pills-password').addEventListener('submit', function(event) {
+    const newPassword = document.getElementById('new-password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+
+    if (newPassword !== confirmPassword) {
+        event.preventDefault();
+        alert('New passwords do not match.');
+    }
+});
+
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script>
+    $(document).ready(function() {
+        $('#updatepasswordForm').on('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the default way
+
+            var formData = new FormData();
+            var newpassword=document.getElementById('new-password').value;
+            var password=document.getElementById('current-password').value;
+            formData.append('newpassword',newpassword)
+            formData.append('password',password) // Create a FormData object from the form
+            
+            $.ajax({
+                url: '{% url "ajax_test" %}',  // Update the URL to your API endpoint
+                type: 'POST',
+                data: formData,
+                contentType: 'application/json',
+                processData: false,
+                contentType: false,
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                
+                success: function(response) {
+                  console.log('Update successful:', response);
+                  
+                  if (response['message']=='updated successfully') {
+                    alert(response['message'])
+                    window.location.href = "/login";
+                  }
+                  else{
+                    alert(response['message'])
+                  }
+                },
+                error: function(xhr, status, error) {
+                  console.error('Update failed:', error);
+                  alert(error)
+                }
+              });
+        });
+    });
+
+   
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+
+</body>
+</html>

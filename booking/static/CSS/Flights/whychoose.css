@@ -1,0 +1,18 @@
+
+   
+   h4 {
+  color:coral;
+  font-size:25px;
+  font-weight: bold;
+  margin-top: 10px; 
+  margin-bottom: 10px;
+}
+.container p {
+    margin: 0; 
+    padding: 10px;
+    white-space: pre-wrap;
+} 
+#op{
+        color: rgb(109, 54, 54);
+        font-size: 20px;
+    }

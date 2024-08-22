@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js" integrity="sha512-xgIrH5DRuEOcZK5cPtVXx/WSp5DTir2JNcKE5ahV2u51NCTD9UDxbQgZHYHVBlPc4H8tug6BZTYIl2RdA/X0Vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="{% static 'CSS/Flights/zero_offer.css' %}">
+    <title>100% cancellation</title>
+    
+
+</head>
+<body>
+
+    <center><img src="{{res1.0.image}}" class="w-100" style="height:440px" id="img"></center>
+
+    <center><div class="container1 pt-5 ">
+      <p class="h5 text-center text-secondary text-align center" style="font-size: 17px; line-height: 26px;">{{res1.0.title}}</p></center>  <br>
+        <div class="col text-center">
+            <a href="/"><input type="button" value="Book Now" class="btn btn-sm btn-primary"></a>
+        </div>
+    </div></center>
+<center>
+    <div class="container2 mt-5">
+        <div class="row">
+            <div class="col c3 p-3 mr-5" style="background-color: rgb(217, 244, 252)" id="card1">
+                <div class="row">
+                    <div class="col-3 ml-2">
+                        <img class="rounded" src="{{res1.0.logo1}}" style="width: 100px;" id="logo1">
+                    </div>
+                    <div class="col pt-4 ml-5">
+                        <b><p class="content1">{{res1.0.content1}}</p></b>
+                    </div>
+                </div>
+            </div>
+            <div class="col c3 p-3 " style="background-color: rgb(217, 244, 252)" id="card2">
+                <div class="row">
+                    <div class="col-3 ml-2">
+                        <img class="rounded"  src="{{res1.0.logo2}}" style="width: 80px;">
+                    </div>
+                    <div class="col pt-4 ml-5">
+                        <b><p class="content2">{{res1.0.content2}}</p></b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</center>
+    <br><br><br>
+
+    <div class="container">
+    <div class="row" style="background-color: rgb(233, 233, 245);border-radius: 10px;padding: 10px 20px;">
+    <p class="pt-4 h4 text-info">{{res2.0.title}}</p>
+        <ul>
+            {% for i in res2 %}
+            {% if i.title in res2.0.title %}
+            <li>{{i.content}}</li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div><br>
+        
+    <div class="row" style="background-color: rgb(233, 233, 245);border-radius: 10px;padding: 10px 20px;">
+
+        <p class="pt-4 h4 text-center text-info">{{res2.6.title}}</p>
+        
+            {% for i in res2 %}
+            {% if i.title in res2.6.title %}
+            <ul>
+            <li><p class="text-left">{{i.content}}</p></li>
+            </ul>
+            {% endif %}
+            {% endfor %}
+    </div><br>
+    
+    <div class="row" style="background-color: rgb(233, 233, 245);border-radius: 10px;padding: 10px 20px;">
+
+        <p class="pt-4 h4 text-info">{{res2.7.title}}</p>
+        <ul>
+            {% for i in res2 %}
+            {% if i.title in res2.7.title %}
+            <li>{{i.content}}</li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div><br>
+    
+    <div class="row" style="background-color: rgb(233, 233, 245);border-radius: 10px;padding: 10px 20px;">
+
+        <p class="pt-4 h4 text-info">{{res2.13.title}}</p>
+        <ul>
+            {% for i in res2 %}
+            {% if i.title in res2.13.title %}
+            <li>{{i.content}}</li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    </div>
+    <br><br>
+</body>
+</html>

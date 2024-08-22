@@ -1,0 +1,150 @@
+
+       .container {
+            margin: auto;
+            background: #f9f9f9;
+            padding: 10px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            /* margin-top: 10px; */
+            background-color: #f9f9f9;
+        }
+
+        .cab-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding-left: 40px;
+        }
+
+        .cab-card-title {
+            color: green;
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            margin-left: -20px;
+        }
+
+        .cab-card ul {
+            list-style-type: disc;
+            padding: 0;
+        }
+
+        .cab-card ul li {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: black;
+        }
+
+        .custom-card {
+            margin-left: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            height: 100%; 
+        }
+
+        .btn-on-image {
+            padding: 1vh 2vw;
+            background-color: rgb(35, 172, 23);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            position: absolute;
+            top: 92%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 14px; 
+        }
+        .btn-on-image:hover {
+            background-color: #0056b3;
+            color: white;
+            text-decoration: none;
+        }
+
+        .container1{
+            position: relative;
+        }
+
+        .card-image img {
+            max-width: 100%;
+            height: 450px;
+            width: 1600px;
+        }
+        .custom-card {
+    background-color: lightsalmon;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 100%; /* Adjusted max-width to ensure full width */
+     width: 800px;
+    height: 100%;
+    margin-top: 20px;
+}
+
+
+.custom-card h4 {
+    color: #fff; /* Set text color for title */
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.custom-card p {
+    color: black; /* Set text color for description */
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    /* Adjustments for tablets */
+    .container {
+        width: 95%;
+    }
+
+    .cab-card {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .cab-card-title {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .cab-card ul li {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .btn-on-image {
+        font-size: 10px; 
+        padding: 4px 8px; 
+        margin-top: -15px;
+    }
+
+    .card-image img {
+        height: auto;
+        max-height: 230px;
+    }
+
+    .custom-card h4 {
+        font-size: 18px; /* Adjusted font size for mobile view */
+    }
+    .custom-card{
+        width: 95%;
+        margin-top: -10px;
+        margin-left: -10px;
+        margin-right: -10px; 
+    }
+
+    .custom-card p {
+        font-size: 18px; 
+    }
+}
+
+
+    

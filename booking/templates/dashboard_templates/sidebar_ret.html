@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+    <link rel="stylesheet" href="{% static 'CSS/dashboard/sidebar_ret.css' %}">
+    
+</head>
+<body>
+    <div class="sidebar">
+        <ul>
+            {% for sub in nav_item %}
+            <li class="nav-item parent">
+                <a href="#"><i class="{{ sub.icon }}"></i> {{ sub.title }}</a>
+                <ul>
+                    {% for i in Sidebar %}
+                    {% if sub.title == i.subdivision %}
+                    <li class="nav-item">
+                        <a href="{{ i.url }}">{{ i.title }}</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script>
+        document.querySelectorAll('.sidebar .parent > a').forEach(function(parentLink) {
+            parentLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                let parentLi = this.parentNode;
+                parentLi.classList.toggle('active');
+                
+                
+                document.querySelectorAll('.sidebar .parent').forEach(function(otherLi) {
+                    if (otherLi !== parentLi) {
+                        otherLi.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

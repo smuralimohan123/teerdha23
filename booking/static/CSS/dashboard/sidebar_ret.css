@@ -1,0 +1,36 @@
+
+body {
+    font-family: Arial, sans-serif;
+}
+.sidebar {
+    width: 250px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    position: fixed;
+    height: 100%;
+}
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+.sidebar ul li {
+    padding: 8px 0;
+}
+.sidebar ul li a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 8px;
+    border-radius: 4px;
+}
+.sidebar ul li a:hover {
+    background-color: #e0e0e0;
+}
+.sidebar ul li ul {
+    display: none;
+    list-style-type: none;
+    padding-left: 15px;
+}
+.sidebar ul li.active ul {
+    display: block;
+}

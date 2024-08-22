@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Like Button with Chart</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="{% static 'CSS/rlikes.css' %}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+}
+
+.like-button {
+    display: flex;
+    align-items: center;
+}
+
+#like-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#like-btn:hover {
+    background-color: #0056b3;
+}
+
+#like-count {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.chart-container {
+    margin-top: 20px;
+    width: 400px;
+    height: 300px;
+}
+
+    </style>
+</head>
+<body><br><br><br><br><br><br><br>
+    
+    <div class="container">
+        <div class="like-button">
+            <button id="like-btn">
+                <i class="uil uil-thumbs-up"></i>
+                <span class="link-name">Like</span>
+            </button>
+            <span id="like-count">0</span>
+        </div>
+        <div class="chart-container">
+            <canvas id="like-chart"></canvas>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        let likeCount = 0;
+        const likeButton = document.getElementById('like-btn');
+        const likeCountDisplay = document.getElementById('like-count');
+        const ctx = document.getElementById('like-chart').getContext('2d');
+        let chart;
+
+        likeButton.addEventListener('click', function() {
+            likeCount++;
+            likeCountDisplay.textContent = likeCount;
+            updateChart();
+        });
+
+        function updateChart() {
+            if (chart) {
+                chart.destroy();
+            }
+            chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Likes'],
+                    datasets: [{
+                        label: 'Likes',
+                        data: [likeCount],
+                        backgroundColor: 'rgba(0, 123, 255, 0.5)',
+                        borderColor: 'rgba(0, 123, 255, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+
+        updateChart(); // Initialize chart with initial like count
+    </script>
+</body>
+</html>

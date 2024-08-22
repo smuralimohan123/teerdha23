@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPECIAL OFFER OF THE WEEK</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'CSS/buses/trendcard8.css' %}">
+
+    
+</head>
+<body>
+    <div class="container">
+        {% for i in res8 %}
+        <div class="image-container">
+            {% if i.image %}
+            <img src="{{ i.image }}" class="w-100" style="height: 410px;" id="img">
+            <a href="/bus_main/" class="more-info-link">Book Now</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+
+    <div>
+        {% for i in res8 %}
+            <center><h3>{{i.heading}}</h3></center>
+        {% endfor %}
+    </div>
+
+    <div class="table-wrapper d-flex justify-content-center text-align-center">
+        <table border="1" style=" border: 1px solid rgb(243, 183, 127); font-weight: bold;">
+            {% for i in res8 %}
+                {% if i.heading1 and i.heading2 %}
+                    <tr>
+                        <th>{{i.heading1}}</th>
+                        <th>{{i.heading2}}</th>
+                    </tr>
+                {% endif %}
+    
+                {% if i.offer and i.promocode %}
+                    <tr>
+                        <td>{{i.offer}}</td>
+                        <td>{{i.promocode}}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+    </div><br><br>
+
+    <div class="container1">
+      
+        {% for i in res8 %}
+        <div class="offer">
+            <div class="offer-heading">{{ i.title }}</div>
+          
+            <ul class="offer-point">
+              {% if i.point %}
+              <li>{{ i.point }}</li>
+              {% endif %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

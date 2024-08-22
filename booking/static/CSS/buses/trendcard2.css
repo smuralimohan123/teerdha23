@@ -1,0 +1,120 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+.container {
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 1600px;
+}
+.container1 {
+    background-color: white;
+    padding: 20px;
+    margin: 30px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 1000px;
+}
+.offer-title {
+    color: rgb(199, 8, 126);
+    font-size: 25px;
+    margin-top: 20px;
+    margin-left: 10px;
+    text-align: center;
+}
+.offer-point {
+    font-size: 20px;
+    color: #111111;
+    list-style-type: disc; 
+    padding-left: 20px;
+}
+#img {
+    max-height: auto;
+}
+.image-container {
+    position: relative;
+    text-align: center;
+}
+.more-info-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: green;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.more-info-link:hover {
+    background-color: #0056b3;
+    color: white;
+    text-decoration: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    #img {
+        height: auto;
+        max-height: 230px;
+    }
+    .more-info-link {
+        font-size: 8px;
+        padding: 5px;
+    }
+
+    /* Flexbox for horizontal layout in mobile view */
+    .card-content {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap; /* Prevent wrapping */
+        overflow-x: auto; /* Enable horizontal scrolling */
+    }
+    .card-content > div {
+        flex: 1 0 auto; /* Allow items to grow and shrink as needed */
+        min-width: 150px; /* Set a minimum width for each item */
+        margin: 5px; /* Margin for spacing between items */
+        padding: 10px; /* Padding inside each item */
+        font-size: 16px; /* Font size for better readability */
+        text-align: center; /* Center align text */
+        border: 1px solid #000;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 0 5px rgba(0,0,0,0.1); /* Add slight shadow for better appearance */
+    }
+    .offer-title {
+        font-size: 26px;
+    }
+    .offer-point {
+        font-size: 24px;
+    }
+    .container1 {
+        width: 90%;
+    }
+}
+
+@media (min-width: 769px) {
+    .card-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .card-content > div {
+        width: calc(20% - 10px); /* Adjust width for larger screens */
+        margin: 10px;
+        padding: 10px;
+        font-size: 18px;
+        border: 1px solid #000;
+        border-radius: 10px;
+    }
+    
+}

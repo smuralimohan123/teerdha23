@@ -1,0 +1,25 @@
+
+     @media (max-width: 768px) {
+    .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    }
+}
+
+.navsearch{
+      
+      background:  rgb(223, 156, 143) 50%;
+      border-radius: 10px; 
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      color: black;
+  
+    }
+  .container {
+            width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+        }

@@ -1,0 +1,108 @@
+
+        /* Global styles for both light and dark modes */
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            flex-direction: column;
+        }
+
+        table {
+            width: 80%; /* Make table responsive */
+            max-width: 950px; /* Limit maximum width */
+            border-collapse: collapse;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            border-radius: 10px;
+            margin: 50px 0px 0px 200px; 
+            
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+
+        th {
+            background-color: rgb(134, 127, 127);
+                color: #fff;
+                font-weight: bold;
+                text-align: center !important;
+        }
+
+        td {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        td a.url {
+            text-decoration: none;
+            color: #3498db; /* Default link color */
+        }
+
+        /* Styles for dark mode */
+        body.dark {
+            background-color: #2d2d2d;
+            color: #ffffff;
+        }
+
+        body.dark table {
+            background-color: #2d2d2d;
+            color: #ffffff;
+        }
+
+        body.dark th {
+            background-color: #1e272e;
+            color: #ffffff;
+        }
+
+        body.dark td {
+            background-color: #2d2d2d;
+            color: #ffffff;
+        }
+
+        body.dark td a.url {
+            color: #ffffff; /* Link color in dark mode */
+        }
+        
+        /* Button style */
+        .hk {
+           
+            border-radius: 5px;
+            background-color:#0e8d0e9d; 
+            color: #fff;
+            text-decoration: none;
+           padding: 10px 15px;
+            margin: 50px 0px 0px 900px; 
+            font-weight: bold; 
+            cursor: pointer;
+        }
+        .hk:hover {
+            color: #0e8d0e9d;
+            text-decoration: none;
+            border: 2px solid #0e8d0e9d;
+            background-color: white;
+            transition: .5s auto all;
+            transition: all .5s;
+        }
+    
+        /* Change background color in dark mode */
+        body.dark .hk {
+            background-color: #3a3737; 
+        }
+
+        /* Header style */
+        .header {
+            text-align:center;
+            margin-top : 750px ;
+            float: left;
+            margin-right: 370px
+        }
+        .sr{
+            margin: 100px 0px 0px auto;
+        }

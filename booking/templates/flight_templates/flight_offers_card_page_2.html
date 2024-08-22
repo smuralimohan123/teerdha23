@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Axis bank offer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'CSS/Flights/flight_offers_card_page_2.css' %}">  
+
+</head>
+<body>
+  
+        {% for i in res1 %}
+       
+        <center>
+            {% if i.photo %}
+            <div class="container1">
+                 <img src="{{ i.photo }}" class="w-100" style="height: 410px;" id="img">
+                <center> <a href="/" class="btn btn-on-image">Book Now</a></center>
+            </div>
+            <br>
+            <!-- <div class="container  text-center h5"  style="color: black; font-weight: bold;"> -->
+            <center>
+                <div class="container2 text-center h5 p-4 " style="color: black; background-color: #dcded7; border-radius: 25px; max-width: 750px; width: 100%; line-height: 35px; ">
+                    <div class="head">{{ i.heading }}</div>
+                   
+                    <div class="cont">{{ i.content }}</div>
+    
+                </div>
+            </center>
+            <!-- </div>  -->
+    
+                {% endif %}       
+            </center>
+            {% endfor %}
+       
+    <br>
+   
+   <div class="container custom-container">
+        {% for i in res2 %}
+        {% if i.title and i.description %}
+           <div class="flight-card">
+            {% if i.photo1 %}
+                 <img src="{{ i.photo1 }}" class="card-image1" id="img">
+            {% else %}
+            {% endif %}
+           
+                <div class="card-title1">{{ i.title }}</div>
+                <div class="card-description1">
+                 <p>{{ i.description }}</p>
+        {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+   
+<br>
+
+    <div class="container">
+     <div class="container-form"> 
+        {% for i in res1 %}  
+            <h5 class="card-title2">{{ i.title }}</h5>
+            <ul style="margin-left: 25px;">
+                {% if i.point %}
+                    <li>{{ i.point }}</li>
+                {% endif %}
+            </ul>
+        {% endfor %}
+    </div>
+    </div> 
+
+
+</body>
+</html><br>
+
+

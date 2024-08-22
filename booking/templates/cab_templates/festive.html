@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Festive card</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'CSS/cabs/festive.css' %}">
+
+</head>
+<body>
+  
+
+  <div>
+    {% for i in res %}
+            <div class="card-image"  style=" text-align: center;">
+            {% if i.photo %}
+            
+            <img src="{{ i.photo }}" class="card-image" alt="Card Image" id="img">
+             
+            {% endif %}
+        </div>
+    {% endfor %}
+</div><br>
+<div class="container1">
+<a href="/cab_main/" class="btn-on-image">Book Now</a></div>
+
+ <div class="content" >
+
+    <div class="card mb-3 highlighted-card">
+      <div class="card-body">
+        <center><h4 class="card-title">Special Festive Offer</h4></center>
+        <ul>
+          <p>Instant discount upon entering the code <b>"MAKARA20"</b>,Valid only for new customers.</p>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+
+
+<div class="container">
+  <br>
+
+  <div>
+      {% for i in res %}
+          {% if i.title %}
+              <div class="cab-card"> 
+                  <div class="card-body">
+                      <h4 class="cab-card-title">{{ i.title }}</h4>
+                      <ul>
+                          {% if i.point1 %}
+                              <li>{{ i.point1 }}</li>
+                          {% endif %}
+                          {% if i.point2 %}
+                              <li>{{ i.point2 }}</li>
+                          {% endif %}
+                          {% if i.point3 %}
+                              <li>{{ i.point3 }}</li>
+                          {% endif %}
+                          {% if i.point4 %}
+                              <li>{{ i.point4 }}</li>
+                          {% endif %}
+                          {% if i.point5 %}
+                              <li>{{ i.point5 }}</li>
+                          {% endif %}
+                          {% if i.point6 %}
+                              <li>{{ i.point6 }}</li>
+                          {% endif %}
+                          {% if i.point7 %}
+                              <li>{{ i.point7 }}</li>
+                          {% endif %}
+                          {% if i.point8 %}
+                              <li>{{ i.point8 }}</li>
+                          {% endif %}
+                          {% if i.point9 %}
+                              <li>{{ i.point9 }}</li>
+                          {% endif %}
+                          {% if i.point10 %}
+                              <li>{{ i.point10 }}</li>
+                          {% endif %}
+                          {% if i.point11 %}
+                              <li>{{ i.point11 }}</li>
+                          {% endif %}
+                          {% if i.point12 %}
+                              <li>{{ i.point12 }}</li>
+                          {% endif %}
+                      </ul>
+                  </div>
+              </div>
+          {% endif %}
+      {% endfor %}
+  </div>
+</div>
+
+<br>
+</body>
+</html>
+

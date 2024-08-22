@@ -1,0 +1,125 @@
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: #f9f9f9;
+            padding: 10px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .cab-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 0px;
+        }
+
+        .cab-card-title {
+            color: #0e327b;
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .cab-card ul {
+            list-style-type: disc;
+            padding: 0;
+        }
+
+        .cab-card ul li {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: black;
+            margin-left: 20px;
+        }
+
+        .custom-h4 {
+            color: #25a09e;
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .custom-card {
+            margin-left: 15px;
+            margin-bottom: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            height: 100%;
+        }
+
+        .card-image img {
+            max-width: 100%;
+            height: 450px;
+            width: 1600px;
+        }
+
+        .btn-on-image {
+            padding: 1vh 2vw;
+            background-color:rgb(6, 159, 164);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            position: absolute;
+            top: 92%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 14px; /* Set a fixed font size */
+        }
+        .btn-on-image:hover {
+            background-color: #25b32a;
+            color: white;
+            text-decoration: none; /* Remove underline */
+        }
+
+        .container1 {
+            position: relative;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .cab-card {
+                padding: 10px;
+            }
+            .custom-h4 {
+                font-size: 24px;
+            }
+            .card-image img {
+                height: auto;
+                width: 100%;
+            }
+            .btn-on-image {
+                font-size: 10px;
+                padding: 4px 8px;
+            }
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #25a09e, #1f1f1f); /* New gradient background color */
+            color: #fff; /* New text color */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+            text-align: center;
+            
+        }
+
+        .highlight h4 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffba39;
+            margin-bottom: 15px;
+        }
+
+        .highlight p {
+            font-size: 18px;
+            color: #ffffff;
+        }
+    

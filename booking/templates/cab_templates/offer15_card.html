@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>offer15 card</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Added meta viewport tag -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'CSS/cabs/offer15_card.css' %}">
+</head>
+<body>
+    <div>
+        {% for i in res %}
+            <div class="card-image" style="margin-bottom: 20px; text-align: center;margin-top: -15px">
+                {% if i.photo %}
+             <img src="{{ i.photo}}" style="width: 1600px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+             
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="container1">
+    <a href="/cab_main/" class="btn btn-on-image">Book Now</a></div>
+
+    <br><br>
+    <div class="highlight-card">
+        <h4 class="highlight-card-title">Special Offer</h4>
+        <p class="highlight-card-description">
+            Get a 15% discount on your first booking with us! Use code <b>"OFFER15"</b> during checkout to avail the offer.
+        </p>
+    </div>
+    <div class="container">
+        <br>
+
+        <div>
+            {% for i in res %}
+                {% if i.title %}
+                    <div class="cab-card"> 
+                        <div class="card-body">
+                            <h4 class="cab-card-title">{{ i.title }}</h4>
+                            <ul>
+                                {% if i.point1 %}
+                                    <li>{{ i.point1 }}</li>
+                                {% endif %}
+                                {% if i.point2 %}
+                                    <li>{{ i.point2 }}</li>
+                                {% endif %}
+                                {% if i.point3 %}
+                                    <li>{{ i.point3 }}</li>
+                                {% endif %}
+                                {% if i.point4 %}
+                                    <li>{{ i.point4 }}</li>
+                                {% endif %}
+                                {% if i.point5 %}
+                                    <li>{{ i.point5 }}</li>
+                                {% endif %}
+                                {% if i.point6 %}
+                                    <li>{{ i.point6 }}</li>
+                                {% endif %}
+                                {% if i.point7 %}
+                                    <li>{{ i.point7 }}</li>
+                                {% endif %}
+                                {% if i.point8 %}
+                                    <li>{{ i.point8 }}</li>
+                                {% endif %}
+                                {% if i.point9 %}
+                                    <li>{{ i.point9 }}</li>
+                                {% endif %}
+                                {% if i.point10 %}
+                                    <li>{{ i.point10 }}</li>
+                                {% endif %}
+                                {% if i.point11 %}
+                                    <li>{{ i.point11 }}</li>
+                                {% endif %}
+                                {% if i.point12 %}
+                                    <li>{{ i.point12 }}</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    
+    <br>
+</body>
+</html>

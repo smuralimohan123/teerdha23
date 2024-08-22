@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FAQS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'CSS/Flights/flightfaq_ins.css' %}">  
+</head>
+<body><br>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="popup" id="faqPopup">
+        <label for="faqPopup" class="close" onclick="flightClosePopup()">&times;</label>
+    <center>
+
+            <br><h5 style="color: rgb(153, 125, 25);">Flight FAQ insert form</h5>
+
+
+        <form method="post" enctype="multipart/form-data"> {% csrf_token %}
+            <div class="form-group">
+                <label>question</label>
+                <input type="text" name="question" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>answer</label>
+                <input type="text" name="answer" class="form-control">
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </center>
+</body>
+</html>

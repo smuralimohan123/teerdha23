@@ -1,0 +1,61 @@
+{% extends 'dashboard_templates/admin.html' %}
+{% load static %}
+
+{% block main_content %}
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="{% static 'CSS/dashboard/cab_dashboard2ndpage.css' %}">
+
+            </head>
+            <body class="jk"><br>
+
+                <h2 class="sr">Cabs offers 2nd pages:</h2><br> <br>
+                <div class="d-flex ">
+                    <a id="offer-popup" class="hk">OFFER-INSERT-FORM</a>
+                </div>
+            
+        
+                <table  border="1" class="tt">
+                    <tr>
+                        <th>ID</th>
+                        <th>OFFER</th>
+                        <!-- <th>url_insert</th> -->
+                        <th>offer_data</th>
+                        <th>url_update</th>
+                        <th>url_insert</th>
+                        
+                    </tr>
+                    {% for i in up %}
+                    <tr>
+                        <td>{{i.id}}</td>
+                        <td>{{i.offer}}</td>
+                        <!-- <td><a href="{{i.url_insert}}">{{i.url_insert}}</a></td> -->
+                        <td>{{i.offer_data}}</td>
+                        <td><a href="{{i.url_update}}">{{i.url_update}}</a></td>
+                        <td><a href="{{i.url_insert}}">{{i.url_insert}}</a></td>  
+                       
+                    </tr>
+                    {% endfor %}
+                </table><br>
+                {% include 'dashboard_templates/cabdb_offer2ndpage.html' %}
+
+                <script>
+                    function openPopup() {
+                        document.getElementById('overlay').style.display = 'block';
+                        document.getElementById('offerPopup').style.display = 'block';
+                    }
+            
+                    function CabClosePopup() {
+                        document.getElementById('overlay').style.display = 'none';
+                        document.getElementById('offerPopup').style.display = 'none';
+                    }
+            
+                    document.getElementById('offer-popup').addEventListener('click', openPopup);
+                </script>
+            
+        </body>
+    </html>         
+
+{% endblock main_content %}

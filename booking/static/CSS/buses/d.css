@@ -1,0 +1,724 @@
+    /* Custom styles for the bus search form */
+        .bus-search-form {
+            
+    width: 100%; /* Adjust width using percentages */
+    max-width: 1000px; /* Limit maximum width */
+    
+   /* Center align content */
+}
+       
+
+        .bus-search-form h1 {
+            color: #2b2827;
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+           
+        }
+
+        .search-inputs {
+            min-height: 150px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            align-content: center;
+            
+            justify-content: space-between;
+            position: relative;
+            min-width: 200px;
+        }
+
+        .search-inputs label {
+            font-size: 18px;
+            color: #333; /* Changed color */
+        }
+
+        .search-inputs input[type="text"],
+        .search-inputs input[type="date"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin-right: 10px;
+            font-size: 16px;
+            outline: none;
+            
+        }
+
+        .search-inputs button {
+            padding: 5px 10px;
+            border-radius: 3px;
+            border: 1px solid red ;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: red; /* Changed color */
+            color: #fff;
+            
+        }
+
+        .search-inputs button:hover {
+/* Changed hover color */
+            border: 1px solid black;
+        }
+
+        .arrow-button {
+            font-size: 24px;
+            margin: 0 5px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease;
+            padding: 10px 15px; /* Adjusted padding */
+        }
+
+        
+
+        .arrow-button.rotate {
+            transform: rotate(180deg);
+        }
+
+        .container {
+            /* background: rgb(255,246,230);
+            background: linear-gradient(0deg, rgba(255,246,230,1) 50%, rgba(255,221,214,1) 70%); */
+            border-radius: 20px;
+           padding: 10px;
+           background-image: url(https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?fm=jpg&w=3000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVzfGVufDB8fDB8fHww);
+           background-size: cover;
+           background-repeat: no-repeat;
+}
+
+        /* Bus icons */
+        .bus-icon {
+            color: #1d1f20;
+            margin-right: 5px;
+            font-size: 20px;
+        }
+
+        .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: auto; /* Adjusted margin-left */
+    margin-right: auto; /* Adjusted margin-right */
+    width: 90%; /* Adjusted width */
+}
+
+
+.search {
+    margin-top: 10px;
+    margin-left: auto; /* Aligns to the right */
+    margin-right: auto; /* Aligns to the left */
+    justify-content: center; /* Centers horizontally */
+}
+
+
+
+
+         /* Trending Offers Styles */
+    
+   
+    .cards-container {
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch; 
+    }
+    .custom-cards-container::-webkit-scrollbar { 
+    display: none;
+}
+
+    
+    .card {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    height: 190px;
+    display: inline-block;
+    vertical-align: top;
+    width: 300px; /* Set a fixed width for the cards */
+    margin-right: 20px; /* Add some margin between cards */
+}
+
+    
+    .card-content {
+        display: flex;
+        align-items: center;
+    }
+    
+    .card img {
+        width: 200px;
+        height: 200px; 
+        margin-right: -10px;
+        margin-top: -18px;
+    }
+
+    .offer-details {
+        padding: 20px;
+    }
+    
+    .offer-details h3 {
+        margin-top: 0;
+    }
+    
+    .offer-details p {
+        margin: 5px 0;
+        font-size: 14px;
+    }
+    
+    
+   
+
+    .offer-details .coupon-code {
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+        margin-top: 10px;
+        color: #007bff;
+    }
+
+    .offer-details .coupon-code span {
+        font-weight: bold;
+    }
+
+    button a {
+        text-decoration: none;
+    }
+
+    .trending-offers-container {
+       
+      
+        position: relative; /* Ensure relative positioning for absolute positioning of buttons */
+        background-color:aquamarine;
+        border-radius: 10px;
+        overflow: hidden;
+        /* background-color: #75ac97; */
+        height: auto;
+       
+        
+    }
+    
+    
+    .swiper-wrapper {
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+    }
+
+    .trending-offers-container {
+        width: 1130px; /* Set the desired width */
+        text-align: center; /* Center the contents horizontally */
+    }
+
+    .cards-container {
+        position: relative;
+        overflow: hidden;
+    }
+
+    
+    h3 {
+        font-size: 18px;
+    } 
+    .swiper-wrapper1 {
+        display: flex;
+        justify-content: center;
+        
+    } 
+
+       /* why choose us*/
+       .box {
+    padding: 20px 20px;
+    width: 100%; /* Adjust width using percentages */
+    max-width: 1100px; /* Limit maximum width */
+    margin: 30px auto; /* Center align content */
+    /* box-shadow: 3px 3px 3px green; */
+    background-color: lightgoldenrodyellow;
+    border-radius: 20px;
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.2); 
+    justify-content: center;
+    transition: transform 0.2s ease-in-out;  
+}
+
+ .box:hover{
+        transform: scale(1.02);
+        background-color: rgb(236, 250, 245);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 20px 20px;
+    }
+
+h4 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 20px auto; /* Center align content */
+    width: 90%;
+    color: #f3805d;
+    text-shadow: 1px 1px  #1d1f20;
+    border-radius: 10px;
+    text-align: center;
+
+}
+    h5{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+       
+        color: #066c08;
+        
+    }
+    p{
+        width: 100%;
+        opacity: 85%;
+        font-family:'poppins';   
+    }
+
+   
+
+       /* faq of teerdha */
+
+       .faq {
+    width: 100%;
+    max-width: 1000px; /* Adjust maximum width as needed */
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#myaccordion {
+    max-width: 1000px; /* Adjust maximum width as needed */
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.hidecontent {
+    display: none;
+}
+
+#myaccordion label {
+    box-shadow: 0 0 20px #d4d4d4;
+    display: block;
+    padding: 8px 22px;
+    margin: 20px 0px 1px 0px;
+    cursor: pointer;
+    background-color: rgb(244, 189, 167);
+    color: black;
+    transition: ease .5s;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: 'poppins';
+    width: 100%; /* Adjust width to fill its container */
+}
+
+#myaccordion label:hover {
+    background-color: rgb(248, 221, 210);
+}
+
+.content {
+    box-shadow: 0 0 20px #d4d4d4;
+    background: #ffff;
+    padding: 10px 25px;
+    border: 1px solid #d4d4d4;
+    margin: -1 0 0 0;
+    border-radius: 10px;
+    width: 100%; /* Adjust width to fill its container */
+    font-family: 'poppins';
+    
+}
+
+#myaccordion input:checked+label+.content {
+    display: block;
+    -moz-animation: fadeIn 0.5s ease-out;
+    -o-animation: fadeIn 0.5s ease-out;
+    animation: fadeIn 0.5s ease-out;
+    font-family: 'poppins';
+}
+
+h1 {
+    color: #b32f07;
+    text-align: center;
+    margin-bottom: -10px;
+    font-size: 24px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+   
+}
+
+#myaccordion label.active::before {
+    content: "\25BC";
+    color: maroon;
+    font-size: 15px;
+}
+
+#myaccordion label::before {
+    content: '\25B6';
+    font-size: 15px;
+    color: maroon;
+    float: right;
+    margin-left: 5px;
+    font-family: 'poppins';
+}
+p{
+    font-family: 'poppins';
+    text-align: left;
+}
+.content-wrapper {
+    justify-content: center;
+    max-width: 1000px; /* Limit maximum width */
+    margin: 0 auto; /* Center align content */
+}
+.search-inputs {
+    display: flex;
+    align-items: center;
+}
+
+.arrow-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    padding: 0px 5px;
+    margin-right: 10px;
+    color: black;
+    border: 1px solid rgba(97, 97, 97, 0.733);
+    margin: 5px;
+    min-width: 250px;
+    background-color: white;
+    border-radius: 5px;
+    flex: 1;
+   
+}
+.input-container:hover{
+    border: 1px solid black;
+}
+.input-container button{
+    display: inline;
+    font-size: smaller;
+    background-color: #ccc;
+    border: #d4d4d4;
+    color: black;
+}
+
+.input-container.container1 {
+    min-width: 250px;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 5px;
+    color: black;
+    flex: 1 0 37%;
+   
+}
+
+.search.buses{
+    margin-top: 8px;
+    flex: 3;
+    
+}
+
+.search.buses button{
+  border-radius: 5px;   
+   flex: 1 ; 
+}
+.dateButton{
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 5px;
+    align-self: center;
+}
+      @media (max-width: 768px) {
+    .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    }
+}
+
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+  
+.title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #333;
+}
+  
+.description {
+    font-size: 14px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 20px;
+   
+}
+  
+  
+a {
+    text-decoration: none; 
+}   
+  
+.custom-card img {
+  max-width: 360px;
+  border-radius: 10px;
+  
+}
+
+.custom-card-content {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+   
+    width: 100%;
+    position: relative;
+}
+     
+.custom-cards-container {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+           
+}      
+ 
+ .fixed-carousel-nav {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; 
+    top: 160%;
+    transform: translateY(-50%);
+    gap: 1100px;
+  
+   
+    } 
+
+.carousel-nav {
+    position: absolute;
+    top: 80%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -85px;
+    cursor: pointer;
+    z-index: 1000;
+    margin-left: -25px;
+    margin-right: -25px;
+   
+}
+
+.prev {
+   left: 10px;
+}
+
+.next {
+    right: 17px;
+} 
+
+.title-card {
+    font-size: 14px;
+    color: rgb(74, 71, 71);
+    padding-left: 10px; 
+    margin-bottom: 3px;
+}
+
+.description-discount {
+    font-size: 14px;
+    color: rgb(74, 71, 71);
+    padding-left: 10px; 
+    margin-bottom: 3px;
+    
+}
+
+.custom-card:last-child {
+    margin-right: 0;
+}
+
+.custom-card {
+    margin-right: 15px; 
+    width: 32%;
+}
+
+.custom-code {
+            font-size: 14px;
+            padding: 6px;
+            border-radius: 5px;
+          
+            color:rgb(120, 120, 215);
+            display: inline-block;
+            text-decoration: none;
+            background-color:rgb(237, 235, 235);
+          margin-left: 15px;
+            position: absolute;
+            bottom: 10px;
+        }
+
+.description-vaild{
+    font-size: 14px;
+    color: rgb(74, 71, 71);
+    padding-left: 10px;
+}
+
+.heading{
+   font-size: 18px;
+   padding-left: 10px;
+   color: #b32f07;
+}
+
+    @media only screen and (max-width: 767px) {
+        /* CSS for screens smaller than 768px (e.g., mobile devices) */
+        .custom-card img {
+            width: 153px; /* Full width for each card on smaller screens */
+            height: 100px;
+  
+        }
+        /* CSS for screens smaller than 768px (e.g., mobile devices) */
+        .custom-card {
+           width: calc(50%-10px);
+            height: auto;
+            border-radius: 10px;
+        }
+        .title-card{
+            font-size: 7px;
+            padding-left: 7px;
+        }
+        .heading{
+        margin-top: -7px;
+         font-size: 9px;
+         padding-left: 7px;
+         color: #b32f07;
+        }
+        .description-vaild{
+            font-size: 7px;
+            padding-left: 7px;
+        }
+        .description-discount{
+            font-size: 7px;
+            padding-left: 7px;
+        }
+        .custom-code {
+            font-size: 5px;
+            padding: 2px;
+            border-radius: 5px;
+            margin-left: 5px;
+          
+         
+        }
+        .custom-cards-container{
+            margin-top: -30px;
+        }
+    
+        .fixed-carousel-nav {
+        position: relative;
+        top: 40px;
+        width: 100%;
+        }
+        .search-inputs{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        position: relative;
+        row-gap: 0;
+    }
+    .search.buses button{
+        font-size: small;
+    padding:5px 10px;
+    position: relative;
+    left:0;
+    border-radius: 4px;
+}
+    
+    .arrow-button{
+        position: absolute;
+        right: 160px;
+        top: 35px;
+        transform: rotate(90deg);
+    }
+    .arrow-button.rotate{
+        transform: rotate(-90deg);
+    }
+    button.arrow-button{
+        padding: auto;
+    }
+    .input-container button{
+    display: inline;
+    font-size: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid silver;
+    color: #1d1f20;
+    }
+    .input-container button:hover{
+        background-color: white;
+        color: #007bff;
+        border: 1px solid blue;
+    }
+        
+    }
+    
+/* Media Query for Mobile */
+@media only screen and (max-width: 600px) {
+    .search-inputs{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        position: relative;
+        row-gap: 0;
+    }
+    
+    .arrow-button{
+        position: absolute;
+        right: 30px;
+        top: 40px;
+    }
+    button.arrow-button{
+        padding: auto;
+    }
+    .input-container{
+        
+        border: 1px solid yellow;
+        margin: 5px;
+        width: 100%;
+        background-color: white;
+        border-radius: 5px;
+    }
+    
+    .input-container button{
+    display: inline;
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid silver;
+    color: #1d1f20;
+    }
+    .input-container button:hover{
+        background-color: white;
+        color: #007bff;
+        border: 1px solid blue;
+    }
+    #fromInput,#toInput{
+        width: 80%;
+        
+    }
+    .custom-card{
+        width: calc(50% - 10px);
+    }
+  
+}
+@media only screen and (max-width: 350px){
+    .custom-card{
+        width: 100%;
+    }
+}

@@ -1,0 +1,400 @@
+
+{% extends 'base.html' %}
+{% block cabs %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cabs Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <link rel="stylesheet" href="{% static 'CSS/cabs/cabsearch.css' %}">
+</head>
+
+<body>
+<br>
+ 
+  <div class="content">
+    <form id="searchForm">
+        <div class="search-options">
+            <div class="search-option custom-one-way active" onclick="showForm('customOneWayForm', this)">
+                One Way
+            </div>
+            <div class="search-option outstation-round-trip" onclick="showForm('outstationRoundTripForm', this)">
+                Round Trip
+            </div>
+            <div class="search-option airport-transfers" onclick="showForm('airportTransfersForm', this)">
+                Airport
+            </div>
+            <div class="search-option hourly-rentals" onclick="showForm('hourlyRentalsForm', this)">
+                Rentals
+            </div>
+        </div>
+
+        <div id="customOneWayForm" class="form-section active">
+            <!-- Custom One Way Form Fields -->
+             <div class="uprow row">
+             <div class="fromcity input">
+              <label class="label" for="fromCityInput"><i class="fas fa-map-marker-alt icon"> </i>Pickup City:</label>
+              <input type="text" id="fromCityInput" name="fromCity" placeholder="From City">
+             </div>
+            <div class="arrowButton change">
+              <i class="fas fa-exchange-alt swap-icon" onclick="swapFields('fromCityInput', 'toCityInput')"></i>
+              
+            </div>
+            <div class="tocity input">
+              <label class="label" for="toCityInput" ><i class="fas fa-map-marker-alt icon"></i> Drop-off City:</label>
+              <input type="text" id="toCityInput" name="toCity" placeholder="To City">
+            </div>
+            </div>
+            <div class="downrow row">
+            <div class="departure input">
+              <label class="label" for="departureDate"><i class="fas fa-calendar-alt icon"></i> Departure:</label>
+              <input type="text" id="departureDate" name="departureDate" min="{{today}}" placeholder="Departure Date" onfocus="(this.type='date')" onblur="(this.type='text')" onchange="this.placeholder=this.value">
+            </div>
+            <div class="arrowButton change" style="opacity: 0; ">
+              <i class="fas fa-exchange-alt swap-icon" style="opacity: 0; cursor: default;"></i>
+              
+            </div>
+            <div class="pickup input">
+              <label class="label" for="pickupTime" id="a"><i class="fas fa-clock icon"></i> Pickup Time:</label>
+              <input type="text" id="pickupTime" name="pickupTime" placeholder="Pickup time" onfocus="(this.type='time')" onblur="(this.type='text')" onchange="this.placeholder=this.value">
+            </div>
+            </div>
+        </div>
+
+        <div id="outstationRoundTripForm" class="form-section">
+            <!-- Outstation Round Trip Form Fields -->
+            <div class="uprow row">
+              <div class="fromcity input">
+               <label class="label" for="fromCityInput"><i class="fas fa-map-marker-alt icon"> </i>Pickup City:</label>
+               <input type="text" id="pickupCityInput" name="fromCity" placeholder="From City">
+              </div>
+             <div class="arrowButton change">
+               <i class="fas fa-exchange-alt swap-icon" onclick="swapFields('pickupCityInput', 'dropCityInput')"></i>
+               
+             </div>
+             <div class="tocity input">
+               <label class="label" for="toCityInput" ><i class="fas fa-map-marker-alt icon"></i> Drop-off City:</label>
+               <input type="text" id="dropCityInput" name="toCity" placeholder="To City">
+             </div>
+             </div>
+             <div class="downrow row">
+             <div class="departure input">
+               <label class="label" for="departureDate"><i class="fas fa-calendar-alt icon"> </i>Departure:</label>
+               <input type="text" id="departureDate" name="departureDate" min="{{today}}" placeholder="Departure Date" onfocus="(this.type='date')" onblur="(this.type='text')" onchange="this.placeholder=this.value">
+             </div>
+             <div class="arrowButton change" style="opacity: 0;">
+              <i class="fas fa-exchange-alt swap-icon" style="opacity: 0;cursor: default;"></i>
+              
+            </div>
+             <div class="pickup input">
+               <label class="label" for="pickupTime" id="a"><i class="fas fa-clock icon"> </i>Pickup Time: </label>
+               <input type="text" id="pickupTime" name="pickupTime" placeholder="Pickup time" onfocus="(this.type='time')" onblur="(this.type='text')" onchange="this.placeholder=this.value">
+             </div>
+             </div>
+             <div class="downrow row">
+              <div class="return input">
+                <label class="label" for="returnDate"><i class="fas fa-calendar-alt icon"> </i> Return:</label>
+                <input type="text" id="returnDate" name="returnDate" min="{{today}}" placeholder=" Return Date" onfocus="(this.type='date')" onblur="(this.type='text')" onchange="this.placeholder=this.value">
+              </div>
+              <div class="arrowButton change" style="opacity: 0;">
+                <i class="fas fa-exchange-alt swap-icon" style="opacity: 0;cursor: default;"></i>
+                
+              </div>
+              <div class="drop input">
+                <label class="label" for="dropTime" id="a"><i class="fas fa-clock icon"> </i>Drop Time:</label>
+                <input type="text" id="dropTime" name="dropTime" placeholder="drop time" onfocus="(this.type='time')" onblur="(this.type='text')" onchange="this.placeholder=this.value">
+              </div>
+              </div>
+         </div>
+          
+        
+
+        <div id="airportTransfersForm" class="form-section">
+            <!-- Airport Transfers Form Fields -->
+              
+            <div class="uprow row">
+              <div class="cityinput input">
+               <label class="label" for="cityInput"><i class="fas fa-map-marker-alt icon"> </i>City Name:</label>
+               <input type="text" id="cityInput" name="cityInput" placeholder="City Name">
+              </div>
+             
+             <div class="airportInput input">
+               <label class="label" for="airportInput" ><i class="fas fa-map-marker-alt icon"></i>Airport Name: </label>
+               <input type="text" id="airportInput" name="airport" placeholder="Airport Name">
+             </div>
+             </div>
+             <div class="downrow row">
+             <div class="departure input">
+               <label class="label" for="departureDateAirport"><i class="fas fa-calendar-alt icon">  </i>Departure:</label>
+               <input type="text" id="departureDateAirport" name="departureDate" min="{{today}}" placeholder="Departure Date" onfocus="(this.type='date')" onblur="(this.type='text')" onchange="this.placeholder=this.value">
+             </div>
+             <div class="pickup input">
+               <label class="label" for="pickupTime" id="a"><i class="fas fa-clock icon">  </i>Pickup Time:</label>
+               <input type="text" id="pickupTime" name="pickupTime" placeholder="Pickup time" onfocus="(this.type='time')" onblur="(this.type='text')" onchange="this.placeholder=this.value">
+             </div>
+             </div>
+
+          
+        </div>
+
+        <div id="hourlyRentalsForm" class="form-section">
+
+
+          <div class="uprow row">
+            <div class="cityinput input">
+             <label class="label" for="cityInput"><i class="fas fa-map-marker-alt icon"> </i> Pickup place:</label>
+             <input type="text" id="cityInput" name="cityInput" placeholder="City Name">
+            </div>
+           
+           <div class="rentalInput input">
+             <label class="label" for="rentalInput" ><i class="fas fa-map-marker-alt icon"> </i> Rental Time: </label>
+             <input type="number" id="rentalInput" name="rental" placeholder="Enter Time in hours" min="0">
+           </div>
+           </div>
+           <div class="downrow row">
+           <div class="departure input">
+             <label class="label" for="departureDateAirport"><i class="fas fa-calendar-alt icon"> </i>Pickup Date:</label>
+             <input type="text" id="departureDateAirport" name="departureDate" min="{{today}}" placeholder="Pickup Date" onfocus="(this.type='date')" onblur="(this.type='text')" onchange="this.placeholder=this.value">
+           </div>
+           <div class="pickup input">
+             <label class="label" for="pickupTime" id="a"><i class="fas fa-clock icon"> </i>Pickup Time:</label>
+             <input type="text" id="pickupTime" name="pickupTime" placeholder="Pickup time" onfocus="(this.type='time')" onblur="(this.type='text')" onchange="this.placeholder=this.value">
+           </div>
+           </div>
+ 
+        </div>
+
+        <div>
+            <center><input type="submit" value="Search"></center>
+        </div>
+    </form>
+</div>
+
+<script>
+    function showForm(formId, clickedOption) {
+        var forms = document.querySelectorAll('.form-section');
+        var options = document.querySelectorAll('.search-option');
+
+        forms.forEach(function (form) {
+            form.classList.remove('active');
+        });
+        options.forEach(function (option) {
+            option.classList.remove('active');
+        });
+
+        document.getElementById(formId).classList.add('active');
+        clickedOption.classList.add('active');
+    }
+
+    function swapFields(firstFieldId, secondFieldId) {
+        var firstFieldValue = document.getElementById(firstFieldId).value;
+        var secondFieldValue = document.getElementById(secondFieldId).value;
+
+        document.getElementById(firstFieldId).value = secondFieldValue;
+        document.getElementById(secondFieldId).value = firstFieldValue;
+    }
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementById('departureDate').setAttribute('min', today);
+    document.getElementById('departureDateRoundTrip').setAttribute('min', today);
+    document.getElementById('returnDateRoundTrip').setAttribute('min', today);
+    document.getElementById('departureDateAirport').setAttribute('min', today);
+    document.getElementById('pickupDateHourly').setAttribute('min', today);
+
+  
+    document.getElementById('departureDate').addEventListener('change', function() {
+      var checkinDate = this.value;
+      document.getElementById('departureDateRoundTrip').setAttribute('min', checkinDate);
+      document.getElementById('returnDateRoundTrip').setAttribute('min', checkinDate);
+      document.getElementById('departureDateAirport').setAttribute('min', checkinDate);
+      document.getElementById('pickupDateHourly').setAttribute('min', checkinDate);
+    
+    });
+  });
+</script>
+<br>
+
+    <div class="container">
+        <h2 style="font-size: 32px; font-weight: bold; color:rgb(255, 94, 35); font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" >Offers on Cab Booking</h2>
+        <div class="carousel-icons">
+           <div class="container-form" style="padding: 8px;border-radius: 15px;border: 2px solid midnightblue;">
+            <button class="carousel-btn prev-btn">&#10094;</button>
+            <button class="carousel-btn next-btn">&#10095;</button>
+           </div>
+        </div><br>
+        <div class="carousel">
+            <div class="carousel-container">
+                {% for card in res %}
+                <div class="custom-card card-{{ forloop.counter }}">
+                    {% if card.photo %}
+                    <a href="{{ card.Link }}" class="card-link">
+                    <center><img src="{{ card.photo }}" class="card-img" id="img"></center>
+                    </a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>      
+        </div>
+      </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var scrollInterval;
+            var cardWidth = $('.custom-card').outerWidth(true); 
+            var numCards = $('.carousel-container').children('.custom-card').length;
+            var clonedCards = $('.carousel-container').children('.custom-card').clone();
+            $('.carousel-container').append(clonedCards);
+
+            function startScrolling() {
+                if (!scrollInterval) {
+                    scrollInterval = setInterval(function () {
+                        $('.carousel-container').animate({
+                            scrollLeft: '+=' + cardWidth
+                        }, 'slow', function () {
+                            if ($('.carousel-container').scrollLeft() >= numCards * cardWidth) {
+                                $('.carousel-container').scrollLeft(0);
+                            }
+                        });
+                    }, 4000); 
+                }
+            }
+
+            function stopScrolling() {
+                clearInterval(scrollInterval);
+                scrollInterval = null;
+            }
+
+            startScrolling();
+
+           
+            $('.prev-btn').click(function () {
+                stopScrolling();
+                $('.carousel-container').animate({
+                    scrollLeft: '-=' + cardWidth
+                }, 'slow', function () {
+                    var scrollPosition = $('.carousel-container').scrollLeft();
+                    if (scrollPosition <= 0) {
+                        $('.carousel-container').scrollLeft(numCards * cardWidth);
+                    }
+                    startScrolling(); 
+                });
+            });
+
+            $('.next-btn').click(function () {
+                stopScrolling();
+                $('.carousel-container').animate({
+                    scrollLeft: '+=' + cardWidth
+                }, 'slow', function () {
+                    var scrollPosition = $('.carousel-container').scrollLeft();
+                    if (scrollPosition >= numCards * cardWidth) {
+                        $('.carousel-container').scrollLeft(0);
+                    }
+                    startScrolling(); 
+                });
+            });
+
+
+            document.addEventListener('visibilitychange', function () {
+                if (document.visibilityState === 'hidden') {
+                    stopScrolling();
+                } else {
+                    startScrolling();
+                }
+            });
+        });
+
+    </script>
+
+
+<br><br>
+
+<!-- Why Choose Us -->
+<center><h2 style="font-size: 32px; font-weight: bold; color: rgb(166, 223, 53); font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Why Choose Us ?</h2></center>
+    {% for item in k3 %}   
+        <div class="box" id="whychoose">
+            <h5 style="font-size: 21px;">{{item.ctitle}}</h5>
+            <p style="font-size: 18px;">{{item.heading1}}</p>
+        </div> 
+    {% endfor %}<br<br>
+
+
+<div class="container">
+  <div>
+     <div class="custom-content-container"> {% for faq_entry in b %}
+      <h2 class="custom-h2" style="font-size: 32px; font-weight: bold; color:rgb(255, 94, 35); font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">{{ faq_entry.content }}</h2>
+    {% endfor %}
+  </div><br>
+    
+    <div class="faq-container">
+      {% for faq_entry in b %}
+      <div class="faq-item">
+        <h5 class="faq-title" onclick="toggleFAQ(this)">{{ faq_entry.Title }}</h5>
+        <div class="faq-content">
+          <p>{{ faq_entry.description }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    
+    <br><br>
+ <script>
+    let openFAQ = null;
+    
+    function toggleFAQ(faq) {
+      const answer = faq.nextElementSibling;
+      const icon = faq.classList;
+    
+      if (openFAQ && openFAQ !== faq) {
+        const prevAnswer = openFAQ.nextElementSibling;
+        const prevIcon = openFAQ.classList;
+        prevAnswer.style.display = "none";
+        prevIcon.remove("open");
+      }
+    
+      if (answer.style.display === "block") {
+        answer.style.display = "none";
+        icon.remove("open");
+        openFAQ = null;
+      } else {
+        answer.style.display = "block";
+        icon.add("open");
+        openFAQ = faq;
+      }
+    }
+    </script>
+</div>
+</div> 
+
+<script>
+function swapFields(firstFieldId, secondFieldId) {
+var firstFieldValue = document.getElementById(firstFieldId).value;
+var secondFieldValue = document.getElementById(secondFieldId).value;
+
+document.getElementById(firstFieldId).value = secondFieldValue;
+document.getElementById(secondFieldId).value = firstFieldValue;
+
+if (window.innerWidth <= 600) {
+  
+    var swapIcon = document.querySelector('.swap-icon');
+    swapIcon.style.transform = swapIcon.style.transform ? '' : 'rotate(90deg)';
+}
+}
+
+</script>
+
+</body>
+
+</html>
+
+{% endblock %} 
+

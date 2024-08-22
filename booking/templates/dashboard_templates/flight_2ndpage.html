@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Flight Data</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'CSS/dashboard/flight_2ndpage.css' %}">
+    
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="popup" id="offerPopup">
+        <label for="offerPopup" class="close" onclick="flightClosePopup()">&times;</label>
+        <center>
+            <h5 style="color: rgb(153, 125, 25);">Flight New Offer Insert Form</h5>
+        </center>
+        <div class="container">
+            <form method="post" enctype="multipart/form-data">{% csrf_token %}
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Flight Offer: </span>
+                        <input type="text" name="offer" placeholder="Enter your offer" required>
+                    </div><br>
+                    <div class="input-box">
+                        <span class="details">Insert URL: </span>
+                        <input type="text" name="inserturl" placeholder="//Enter URL here//" required>
+                    </div><br>
+                    <div class="input-box">
+                        <span class="details">Update URL: </span>
+                        <input type="text" name="updateurl" placeholder="//Enter URL here//" required>
+                    </div>
+                </div><br>
+                <div class="button">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</body>
+</html>

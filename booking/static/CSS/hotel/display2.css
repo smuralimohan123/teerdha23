@@ -1,0 +1,26 @@
+            .c{
+                position:absolute;
+                padding-top: 50px;
+                left:37%;
+                font-size: 30px;
+                color: red;
+            }
+            .container{
+                width:70%;
+                height:20% ;
+                margin-left:center;
+                border-radius: 20px;
+                border-bottom-right-radius:100px ;
+                border-color: pink;
+                border-style: solid;
+                text-align: center;
+                background-color: aqua;
+            }
+            .s{
+                text-decoration: underline;
+                font-weight: bold;
+            }
+            .sa{
+                padding-top: 25px;
+                font-size: larger;
+            }

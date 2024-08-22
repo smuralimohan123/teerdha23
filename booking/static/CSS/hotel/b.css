@@ -1,0 +1,12 @@
+#q {
+    width: 80%;
+    border-radius: 8px;
+    border: 1px solid rgb(198, 81, 13);
+}
+.container:hover{
+    transform: scale(1.005);              
+    box-shadow:2px 2px rgb(189, 86, 86);
+}
+.container{
+    padding-top: 7px;
+}

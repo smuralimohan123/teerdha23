@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'CSS/dashboard/login.css' %}">
+    <title>Login</title>
+    
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+       
+
+<!-- login.html -->
+<form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+
+    <label for="id_username">Username:</label>
+    <input type="text" id="id_username" name="username" required>
+
+    <label for="id_password">Password:</label>
+    <input type="password" id="id_password" name="password" required>
+
+    <!-- Your existing login form fields here -->
+    <input type="submit" value="Login">
+</form>
+
+<!-- Password reset link -->
+<p><a href="{% url 'password_reset_view' %}">Forgot Password?</a></p>
+
+
+        
+    </div>
+</body>
+</html>
+
+    
+    

@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search form</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js" integrity="sha512-xgIrH5DRuEOcZK5cPtVXx/WSp5DTir2JNcKE5ahV2u51NCTD9UDxbQgZHYHVBlPc4H8tug6BZTYIl2RdA/X0Vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="{% static 'CSS/buses/search.css' %}">
+
+
+
+
+
+</head>
+<body>
+    <div class="container" style="justify-content: center;">
+        <form id="searchForm" class="mt-3" method="post">
+            {% csrf_token %}
+            <div class="pt-3 pb-4">
+                <div class="container navsearch p-4">
+                    <center><h3><b>Teerdha Online Bus Ticket Booking Site</b></h3></center><br>
+                    <div class="row justify-content-center">
+                        
+                        <div class="col-md-3">
+                            <div class="mb-3" style="text-align: center;">
+                                <i class="bus-icon from fas fa-bus"></i>
+                                <input type="text" name="city" id="city" class="form-control" placeholder="FROM">
+                            </div>
+                        </div>
+                        <div class="arrow-buttons" style="margin-top: 28px;">
+                            <button id="arrowButton" class="arrow-button" onclick="swapDetails()">&larr;</button>
+                        </div>&nbsp;&nbsp;
+                        <div class="col-md-3">
+                            <div class="mb-3" style="text-align: center;">
+                                <i class="bus-icon from fas fa-bus"></i>
+                                <input type="text" name="city" id="city" class="form-control" placeholder="TO">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3" style="text-align: center;">
+                                <i class="bus-icon from fas fa-bus"></i>
+                                <input type="date" class="form-control" name="departure" id="departure">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3" style="text-align: center;">
+                                <button type="button" class="search-button btn btn-danger" style="width: 120px; font-size: 18px;">Search Buses</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    
+      
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          // Date Picker Styling
+          if (document.querySelector('input[type="date"]')) {
+            var datePickerInputs = document.querySelectorAll('input[type="date"]');
+            datePickerInputs.forEach(function(input) {
+              input.classList.add('form-control'); // Apply Bootstrap form-control class
+            });
+          }
+      
+          // Form Submission via JavaScript
+          document.querySelector('.search-button').addEventListener('click', function() {
+            var city = document.getElementById('city').value;
+            var checkin = document.getElementById('checkin').value;
+            var checkout = document.getElementById('checkout').value;
+            var guests = document.getElementById('guests').value;
+            var rooms = document.getElementById('rooms').value;
+            var children = document.getElementById('children').value;
+      
+            // Perform form validation here
+            if (city.trim() === '' || checkin.trim() === '' || checkout.trim() === '') {
+              displayFeedback('Please fill in all fields.', 'error');
+              return;
+            }
+      
+            // Perform form submission (ajax or redirection) here
+            displayFeedback('Form submitted successfully.', 'success');
+          });
+      
+          // Clear Button Functionality
+          document.querySelector('.clear-button').addEventListener('click', function() {
+            document.getElementById('searchForm').reset();
+          });
+      
+          // Feedback Message Function
+          function displayFeedback(message, type) {
+            var feedbackElement = document.getElementById('feedbackMessage');
+            feedbackElement.innerHTML = '<div class="col-md-8 col-lg-8"><div class="alert alert-' + type + '" role="alert">' + message + '</div></div>';
+          }
+        });
+      </script>
+
+</body>
+
+
+</html>

@@ -1,0 +1,35 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <link rel="stylesheet" href="{% static 'CSS/dashboard/flight_2ndpageupdates.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+                
+            </head>
+            <body><br>
+              <center>
+                <h2 class="sr">Flight 2nd pages 1st Booking Update:</h2><br>            
+            
+                <table border="1">
+                    <tr>
+                        <th>ID</th>
+                        <th>OFFER</th>
+                        <th>URL</th>
+                        
+                    </tr>
+                    {% for i in upt %}
+                    <tr>
+                        <td>{{i.id}}</td>
+                        <td>{{i.offer}}</td>
+                        <td class="furl"><a href="{{i.url}}">{{i.url}}</a></td>
+                        
+                       
+                    </tr>
+                    {% endfor %}
+                </table>
+              </center>
+            
+        </body>
+    </html>         

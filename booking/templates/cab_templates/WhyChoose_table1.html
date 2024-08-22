@@ -1,0 +1,131 @@
+
+{% extends 'dashboard_templates/admin.html' %}
+{% block main_content %}
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+        
+        <title>WhyChoose Table</title>
+        <link rel="stylesheet" href="{% static 'CSS/cabs/WhyChoose_table1.css' %}">
+
+        
+    </head>
+    <body>
+      
+<br>
+
+       <h2 class="sk">Cabs Whychoose Us:</h2><br> 
+       
+       <button class="styled-button" >
+        <a id="whychoose-popup">WHYCHOOSE-INSERT-FORM</a></button>
+
+        <br><br>
+          
+        <table border="2">
+            <tr>
+                <th>Question</th>
+                <th>Answer</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+
+            {% for i in k3 %}
+            <tr>
+                <td>{{i.ctitle}}</td>
+                <td>{{i.heading1}}</td>
+                <td><button class="btn btn-info btn-sm edit-faq" data-toggle="modal" data-target="#editModal{{ i.pk }}"><i class="fas fa-edit"></i></button></td>
+
+                <td><a href="#" class="delete-link" data-id="{{i.id}}" data-title="{{i.ctitle}}"><i class="fas fa-trash-alt"></i></a></td></tr>
+            
+
+           
+             <div class="modal fade" id="editModal{{ i.pk }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{ i.pk }}" aria-hidden="true">
+                <div class="modal-dialog" role="document" style="max-width: 70%;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel{{ i.pk }}">Edit WhyChoose</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="editForm{{ i.pk }}" method="post" action="{% url 'WhyChoose_crud_update' i.pk %}">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="ctitle">Question</label>
+                                    <input type="text" class="form-control" id="ctitle" name="ctitle" value="{{ i.ctitle }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="heading1">Answer</label>
+                                    <textarea class="form-control" id="heading1" name="heading1" rows="4">{{ i.heading1 }}</textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <h2>Delete Confirmation</h2>
+                    <p>Are you sure you want to delete ?</p>
+                    <div class="modal-btn-container">
+                        <button class="modal-btn yes">Yes</button>
+                        <button class="modal-btn no">No</button>
+                    </div>
+                </div>
+            </div>
+
+
+            {% endfor %}
+        </table>
+
+        
+
+        {% include 'cab_templates/WhyChoose_insert.html' %}
+        
+        <script>
+            function openPopup() {
+                document.getElementById('overlay').style.display = 'block';
+                document.getElementById('whychoosePopup').style.display = 'block';
+            }
+    
+            function CabClosePopup() {
+                document.getElementById('overlay').style.display = 'none';
+                document.getElementById('whychoosePopup').style.display = 'none';
+            }
+    
+            document.getElementById('whychoose-popup').addEventListener('click',openPopup);
+
+            $(document).ready(function() {
+                $('.delete-link').click(function(e) {
+                    e.preventDefault();
+                    var id = $(this).data('id');
+                    var title = $(this).data('title');
+                    $('#delete-title').text(title);
+                    $('#myModal').css('display', 'block');
+
+                    $('.modal-btn.yes').click(function() {
+                        window.location.href = '/WhyChoose_crud_del/' + id;
+                    });
+
+                    $('.modal-btn.no, .modal').click(function() {
+                        $('#myModal').css('display', 'none');
+                    });
+                });
+            });
+        </script>
+
+    </body>
+</html>
+
+{% endblock main_content %}

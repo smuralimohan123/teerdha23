@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxi Fare Calculator</title>
+</head>
+<body>
+    <h1>Taxi Fare Calculator</h1>
+    <form id="fareForm">
+        <label for="dep_lat">Departure Latitude:</label>
+        <input type="text" id="dep_lat" name="dep_lat"><br><br>
+        <label for="dep_lng">Departure Longitude:</label>
+        <input type="text" id="dep_lng" name="dep_lng"><br><br>
+        <label for="arr_lat">Arrival Latitude:</label>
+        <input type="text" id="arr_lat" name="arr_lat"><br><br>
+        <label for="arr_lng">Arrival Longitude:</label>
+        <input type="text" id="arr_lng" name="arr_lng"><br><br>
+        <button type="submit">Calculate Fare</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("fareForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            fetch('/calculate-fare/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("result").innerHTML = "Estimated fare: " + data.fare;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+</body>
+</html>

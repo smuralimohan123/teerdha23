@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIDE MORE SAVE MORE</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'CSS/buses/trendcard13.css' %}">
+
+   </head>
+<body>
+    <div class="container">
+        {% for i in res7 %}
+        <div class="image-container">
+            {% if i.image %}
+            <img src="{{ i.image }}" class="w-100" style="height: 410px;" id="img">
+            <a href="/bus_main/" class="more-info-link">Book Now</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="container1">
+        {% for i in res7 %}
+        <div class="offer">
+            <div class="offer-heading">{{ i.title }}</div>
+            <ul>
+                {% if i.description %}
+                <li class="offer-title">{{i.description}}</li>
+                {% endif %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

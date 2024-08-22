@@ -1,0 +1,14 @@
+.dashboard{
+    position: relative;
+    left: 250px;
+    background-color: var(--panel-color);
+    min-height: 100vh;
+    width: calc(100% - 250px);
+    padding: 10px 14px;
+    transition: var(--tran-05);
+}
+
+
+.dashboard .dash-content{
+    padding-top: 50px;
+}

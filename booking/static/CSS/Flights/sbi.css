@@ -1,0 +1,28 @@
+#demo2{
+    display: none;
+}
+button{
+    
+    border: 1px solid;
+    border-radius: 10px;
+}
+#img{
+     max-height: auto;
+     max-width: 1600px;
+}
+@media (max-width: 768px) {
+
+    #offer{
+    font-size: 20px;
+    }
+    #conduc{
+        font-size: 20px;
+    }
+   
+}
+@media (max-width: 768px) {
+    #img {
+    height: auto;
+    max-height: 230px; 
+   }
+  }

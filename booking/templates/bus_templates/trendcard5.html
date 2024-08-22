@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEW USER OFFER</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'CSS/buses/trendcard5.css' %}">
+
+    </head>
+<body>
+    <div class="container">
+        {% for i in res %}
+        <div class="image-container">
+            {% if i.Image %}
+            <img src="{{ i.Image }}" class="w-100" style="height: 410px;" id="img">
+            <a href="/bus_main/" class="more-info-link">Book Now</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="container1">
+      
+        {% for i in res %}
+            <div class="offer">
+                <div class="offer-heading">{{ i.heading }}</div>
+                <div class="offer-title" style="margin-top: -7px;">{{ i.title }}</div>
+                <div class="offer-code" style="margin-bottom: -10px; margin-top: 7px;">{{ i.code }}</div>
+                
+            </div>
+            {% endfor %}
+        
+
+        
+            {% for i in res2 %}
+            <div class="offer-title" style="font-weight: bold;">{{ i.heading }}</div>
+                    <ul class="offer-point">
+                        {% if i.title %}
+                        <li>{{ i.title }}</li>
+                        {% endif %}
+                    </ul>
+    
+                    {% endfor %}
+            
+
+
+       
+            {% for i in res1 %}
+            <div class="offer-title" style="font-weight: bold;">{{ i.title }}</div>
+                    <ul class="offer-point">
+                        {% if i.point %}
+                        <li>{{ i.point }}</li>
+                        {% endif %}
+                    </ul>
+                    {% endfor %}
+            
+        </div>
+
+    </div>
+    
+
+</body>
+</html>

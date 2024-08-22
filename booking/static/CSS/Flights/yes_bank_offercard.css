@@ -1,0 +1,26 @@
+body{
+    background-color: rgb(241, 235, 228);
+}
+.card{
+    display:flex;
+}
+#img{
+     max-height: auto;
+     max-width: 1600px;
+}
+@media (max-width: 768px) {
+#img {
+height: auto;
+max-height: 230px; 
+}
+.table{
+width: 98%;
+}
+td{
+font-size: 10px;
+}
+.container{
+width: 95%;
+}
+
+}

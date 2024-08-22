@@ -1,0 +1,74 @@
+#sj{
+    justify-content: center;
+   
+}
+h2{
+    color: brown;
+    text-align: center;
+
+}
+h5{
+    color: green;
+}
+.coupon code{
+    font-weight: bold;
+}
+.custom-container{
+    position: relative;
+}
+
+@media (max-width: 768px) {
+.container {
+        max-width: 95%; 
+       
+ }
+#img{
+    max-height: 230px;
+}
+.btn-on-image{
+    margin-top: 10px;
+}
+
+}
+#img{
+max-height: auto;
+max-width: 1600px;
+}
+
+.btn-on-image {
+            background-color: #0d1a5f;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            position: absolute;
+            top: 105%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        .btn-on-image:hover {
+            background-color: #2E718B;
+            color: white;
+            text-decoration: none; /* Remove underline */
+        }
+
+        .content{
+          position: relative;
+        }
+        .card {
+    max-width: 100%; /* Ensures cards do not exceed their container width */
+}
+
+@media (min-width: 768px) {
+    .card-columns {
+        column-count: 3; /* Number of columns you want */
+        column-gap: 1rem; /* Adjust gap between columns */
+    }
+}
+
+@media (min-width: 992px) {
+    .card-columns {
+        column-count: 4; /* Adjust number of columns for larger screens */
+    }
+}

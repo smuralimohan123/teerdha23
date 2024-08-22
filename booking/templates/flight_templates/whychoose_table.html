@@ -1,0 +1,129 @@
+
+{% extends 'dashboard_templates/admin.html' %}
+{% block main_content %}
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'CSS/Flights/whychoose_table.css' %}">
+
+        
+        <title>WhyChoose Table</title>
+        
+    </head>
+    <body>
+      
+<br>
+
+       <h2 class="sk">Flights Whychoose Crud Operations:</h2><br> 
+       
+       <button class="styled-button">
+        <a id="whychoose-popup" >WHYCHOOSE-INSERT-FORM</a></button>
+
+        <br><br>
+          
+        <table border="2">
+            <tr>
+                <th>question</th>
+                <th>answer</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+
+            {% for i in k %}
+            <tr>
+                <td>{{i.question}}</td>
+                <td>{{i.answer}}</td>
+                <td><button class="btn btn-info btn-sm edit-faq" data-toggle="modal" data-target="#editModal{{ i.pk }}"><i class="fas fa-edit"></i></button></td>
+
+                <td><a href="#" class="delete-link" data-id="{{i.id}}" data-title="{{i.ctitle}}"><i class="fas fa-trash-alt"></i></a></td></tr>
+            
+
+           
+             <div class="modal fade" id="editModal{{ i.pk }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{ i.pk }}" aria-hidden="true">
+                <div class="modal-dialog" role="document" style="max-width: 70%;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel{{ i.pk }}">Edit WhyChoose</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="editForm{{ i.pk }}" method="post" action="{% url 'WhyChoose_update' i.pk %}">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="question">Question</label>
+                                    <input type="text" class="form-control" id="question" name="question" value="{{ i.question }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="answer">Answer</label>
+                                    <textarea class="form-control" id="answer" name="answer" rows="4">{{ i.answer }}</textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {% endfor %}
+        </table>
+
+         <!-- Modal -->
+         <div id="myModal" class="modal">
+            <div class="modal-content">
+                <h2>Delete Confirmation</h2>
+                <p>Are you sure you want to delete <span id="delete-title"></span>?</p>
+                <div class="modal-btn-container">
+                    <button class="modal-btn yes">Yes</button>
+                    <button class="modal-btn no">No</button>
+                </div>
+            </div>
+        </div>
+
+
+        {% include 'flight_templates/Whychoose_insert.html' %}
+        
+    <script>
+           
+            function openPopup() {
+                document.getElementById('overlay').style.display = 'block';
+                document.getElementById('whychoosePopup').style.display = 'block';
+            }
+    
+            function flightClosePopup() {
+                document.getElementById('overlay').style.display = 'none';
+                document.getElementById('whychoosePopup').style.display = 'none';
+            }
+    
+            document.getElementById('whychoose-popup').addEventListener('click',openPopup);
+
+            $(document).ready(function() {
+                $('.delete-link').click(function(e) {
+                    e.preventDefault();
+                    var id = $(this).data('id');
+                    var title = $(this).data('title');
+                    $('#delete-title').text(title);
+                    $('#myModal').css('display', 'block');
+
+                    $('.modal-btn.yes').click(function() {
+                        window.location.href = '/WhyChoose_del/' + id;
+                    });
+
+                    $('.modal-btn.no, .modal').click(function() {
+                        $('#myModal').css('display', 'none');
+                    });
+                });
+            });
+        </script>
+
+    </body>
+</html>
+
+{% endblock main_content %}

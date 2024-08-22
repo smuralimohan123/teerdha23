@@ -1,0 +1,575 @@
+
+
+.icon{
+  display: none;
+}
+        body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+.content {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+#searchForm {
+   /* background-image: url(https://images.unsplash.com/photo-1500964757637-c85e8a162699?q=80&w=1203&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D); */
+  /* background-image: url(https://img.freepik.com/free-photo/beach-glows-with-warm-amber-light-as-waves-gently-lap-sand_91128-4234.jpg?t=st=1722862095~exp=1722865695~hmac=5067a74fc65b77baa3256eeceb6e021dc653d8255f0be71fbe885bd5c73396ae&w=1380); */
+  background-image: url(https://images.pexels.com/photos/8856181/pexels-photo-8856181.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);  
+
+  
+  padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+label {
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: black;
+    width: 150px;
+    text-align: right;
+}
+@media only screen and (max-width: 600px) {
+    label {
+        text-align: left;
+        margin-right: 0;
+        padding-right: 0;
+    }
+
+    .mobile-label {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+
+    input[type="number"] {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    input[type="text"] {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+    .label{
+      display: none;
+    }
+    .input{
+      max-width: 200px;
+    }
+    .change{
+      position: absolute;
+      right: 10%;
+    }
+    #outstationRoundTripForm .downrow.row{
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: flex-start;
+
+}
+#outstationRoundTripForm .downrow.row #departureDate,
+#outstationRoundTripForm .downrow.row #returnDate{
+  margin-right: 2px;
+}
+#outstationRoundTripForm .downrow.row #pickupTime,
+#outstationRoundTripForm .downrow.row #dropTime{
+  margin-left: 2px;
+}
+.search-option{
+  
+  font-weight: bold;
+}
+    #outstationRoundTripForm .downrow .input{
+      flex: 1 1 100px;
+    }
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="number"],
+select {
+    
+    height: 40px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    vertical-align: middle;
+    
+}
+input[type="date"],
+select{
+  font-size: 12px;
+}
+.label{
+  white-space: nowrap;
+  flex: 0 1 150px;
+}
+
+/* input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 9px;
+    border-color: #007bff;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+#searchForm input[type="submit"] {
+    width: auto;
+} */
+ /* Base styles for the submit button */
+/* Base styles for the submit button */
+input[type="submit"] {
+  /* margin-top: 1.5rem; */
+  margin-top: 7px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 9px;
+    border-color: #007bff;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease; /* Add smooth transitions */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.559); /* Add a subtle shadow */
+}
+
+/* Hover styles */
+input[type="submit"]:hover {
+    background-color: #0056b3;
+    transform: scale(1.02); /* Slightly scale up the button */
+    box-shadow: 0 8px 16px rgba(1, 1, 5, 0.507); /* Increase the shadow size */
+}
+
+/* Adjust width for buttons within #searchForm if needed */
+#searchForm input[type="submit"] {
+    width: auto;
+}
+
+
+
+
+
+.swap-icon {
+    cursor: pointer;
+    color: #007bff;
+    font-size: 1.2em;
+}
+
+.vertical-swap-icon {
+    display: none;
+    cursor: pointer;
+    color: #007bff;
+    font-size: 1.2em;
+    float: right;
+}
+
+
+
+.search-options {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    color: black;
+    font-style: bold;
+}
+
+.search-option {
+    padding: 3px 1px;
+    border: 1px solid #302e2e;
+    border-radius: 5px;
+    margin: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex: 1 1 15px;
+    min-width: 15px;
+    margin-bottom: 10px;
+    max-width:100px;
+    text-align: center;
+    white-space: nowrap;
+    
+    
+}
+
+.search-option.custom-one-way.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.search-option.outstation-round-trip.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.search-option.airport-transfers.active {
+    background-color:#007bff;
+    color: white;
+}
+
+.search-option.hourly-rentals.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.form-section {
+    display: none;
+}
+
+.form-section.active {
+    display: block;
+     background-color: rgba(180, 180, 255, 0.445);
+    text-align: center;
+    margin: auto;
+    padding: 30px 0px;
+    padding-right: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+}
+
+.row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.input{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1 1 100px;
+  min-width: 100px;
+  max-width: 365px;
+}
+.change{
+  padding:5px 6px;
+  
+  flex: 0 0 20px;
+}
+
+@media only screen and (max-width: 767px) {
+    input[type="text"],
+    input[type="date"],
+    input[type="time"],
+    select {
+        
+        margin-right: 0;
+    }
+
+    input[type="submit"] {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .search-option {
+        max-width: 100%;
+        margin-right: 0;
+        font-size: 13px;
+
+    }
+
+    
+
+    #a {
+        margin-left: 0;
+    }
+    .mobile-label {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+  .form-section.active {
+    display: block;
+    text-align: center;
+    margin: auto;
+    max-width: 800px;
+    position: relative;
+    padding: 20px 10px;
+    max-width: fit-content;
+}
+.row{
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: auto;
+  align-items: center;
+  position: relative;
+}
+.input{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0 1 0%;
+  width: 100%;
+  min-width: 0%;
+  max-width: 400px;
+}
+.change{
+  /* border: 2px solid blue; */
+   background-color: #a4ccf7;
+  border-radius: 3px;
+  padding: 4px;
+  right: 5%;
+  top: 25%;
+  position: absolute;
+  flex: 0 0 20px;
+}
+.swap-icon {
+  
+      transform: rotate(90deg);
+    }
+}
+@media only screen and (max-width: 300px) {
+
+.search-option{
+  font-size: 5px;
+  
+}
+input[type="date"],
+select{
+  font-size: 10px;
+}
+}
+/*    offer cards */
+                         
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative; /* Position relative for absolute positioning of icons */
+           
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .carousel {
+            overflow-x: hidden;
+            /* Remove position relative from carousel to allow icons to be positioned outside */
+        }
+
+        .carousel-icons {
+            display: flex;
+            justify-content:right;
+            gap: 12px;
+            margin-top: -30px;
+        
+        }
+
+        .carousel-btn {
+            background-color:darkslateblue;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            height: 30px;
+            width: 30px;
+        }
+
+        .carousel-btn:hover {
+            background-color:rgb(105, 96, 164);
+        }
+        .custom-card:hover {
+          transform: translateY(-5px) scale(1.02);
+        }
+
+        .carousel-container {
+            display: flex;
+            scroll-snap-type: x mandatory;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding:7px;
+            /* position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: flex-start; */
+        }
+
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+
+         .custom-card {
+            flex: 0 0 386px;
+            margin-right: 40px;
+            border: 1px solid #9f9a9a;
+            border-radius: 15px;
+            overflow: hidden;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            transition: transform 0.3s ease, transform 0.3s ease;
+        }
+
+.custom-card img {
+  max-width: 470px;
+  width: 390px;
+  height: 220px;
+  border-radius: 10px;
+}
+.custom-card-content {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+}
+
+
+        .card-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+@media only screen and (max-width: 768px) {
+    .carousel-icons {
+        display: none;
+    }
+   
+}
+
+@media only screen and (max-width: 768px) and (max-resolution: 200dpi),
+       only screen and (max-width: 768px) and (max-resolution: 300dpi) {
+        .custom-card {
+           max-width: 150px;
+           max-height: 170px;
+       }
+       .custom-card img{
+        width:150px ;
+        max-height: 90px;
+       }       
+      }
+
+
+/*    faqs and why choose content */
+.box {
+    padding: 20px 20px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 30px auto;
+    /* box-shadow: 3px 3px 3px green; */
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.2); 
+    justify-content: center;
+    transition: transform 0.2s ease-in-out;  
+}
+
+ .box:hover{
+        transform: scale(1.02);
+        /* background-color: rgb(236, 250, 245); */
+        background-color:#dcfacd;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 20px 20px;
+    }
+ 
+    @media only screen and (max-width: 768px) {
+      #whychoose {
+        width: 90%;
+      }
+    }
+   
+
+h4 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 20px auto;
+    width: 90%;
+    color: #f3805d;
+    text-shadow: 1px 1px  #1d1f20;
+    border-radius: 10px;
+    text-align: center;
+
+}
+    h5{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: #a33131;
+        font-weight:600;
+        
+    }
+    p{
+        width: 100%;
+        opacity: 85%;
+        font-family:'poppins';   
+    }
+.faq-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: center;
+  left: 50%;
+}
+
+.faq-item {
+  border-radius: 10px;
+  background-color: white;
+  /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); */
+  overflow: hidden;
+}
+
+.faq-title {
+ /* background-color: #f3e8f7; */
+ background-color: #cfc2d1;
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(51, 49, 49);
+  cursor: pointer;
+  padding: 15px;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.faq-title:hover {
+  background-color:#efd9f7;
+}
+.faq-title::after {
+  content: '+';
+  color: #333;
+  margin-left: 10px;
+}
+
+.faq-title.open::after {
+  content: '-';
+}
+.faq-content {
+  display: none;
+  padding: 15px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.faq-content.active {
+  display: block;
+}
+
+.container-2{
+  background-color:#f8f8f8;
+   width: 1323px;
+}
+   
+    

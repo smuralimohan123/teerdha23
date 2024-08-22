@@ -1,0 +1,15 @@
+body{
+        background-color:lavender;
+    }
+    h2{
+        text-align: center;
+        font-weight: bold;
+    }
+    label{
+        font-weight: bold;
+    }
+    .container{
+        background-color: white;
+        border-radius: 25px;
+        height: 45%;
+    }

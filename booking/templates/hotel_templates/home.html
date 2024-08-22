@@ -1,0 +1,38 @@
+{% load static %}
+<html>
+    <head>
+        <title>FAQS</title>
+        <link rel="stylesheet" href="{% static 'CSS/hotel/home.css' %}">
+
+</head>
+<body>
+
+<h1>Frequently Asked Questions</h1>
+<center><div class="container" id="con">
+{% for i in ks %}
+<button class="accordion"><b>{{i.question}}</b></button>
+<div class="panel">
+  <p>{{i.answer}}</p>
+</div><br>
+{% endfor %}
+</div></center>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AYODHA TRAVEL GUIDE</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'CSS/buses/trendcard1.css' %}">
+
+</head>
+<body>
+    <div class="container">
+        {% for i in res1 %}
+        <div class="image-container">
+            {% if i.image %}
+            <img src="{{ i.image }}" class="w-100" style="height: 410px;" id="img">
+            <a href="/bus_main/" class="more-info-link">Book Now</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="container1">
+      
+        {% for i in res1 %}
+        {% if i.heading %}
+        <h2 class="card-title1">{{ i.heading }}</h2>
+        {% endif %}
+        {% endfor %}
+    
+
+    {% for i in res1 %}
+    <h3 class="title1">{{ i.title }}</h3>
+    <ul>
+        {% if i.point %}
+        <li class="point1">{{ i.point }}</li>
+        {% endif %}
+    </ul>
+    {% endfor %}
+
+    
+        {% for i in res %}
+        <div class="offer-title">{{ i.title }}</div>
+        <ul class="offer-point">
+            {% if i.point %}
+            <li>{{ i.point }}</li>
+            {% endif %}
+        </ul>
+        {% endfor %}
+    </div>
+
+
+
+</body>
+</html>

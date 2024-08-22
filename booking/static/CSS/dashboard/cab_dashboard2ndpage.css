@@ -1,0 +1,94 @@
+
+
+body.dark td a{
+   background-color: black;
+   color: white;
+ }
+body.dark {
+   background-color: black;
+     color: #ffffff;
+ }
+
+ body.dark table {
+   background-color: black;
+     color: #ffffff;
+ }
+
+ body.dark th {
+   background-color: black;
+     color: #ffffff;
+ }
+
+ body.dark td {
+   background-color: black;
+     color: #cccccc;
+ }  
+ .tt {
+   width: 70%;
+   background: #fff;
+   border-radius: 10px;
+   margin: 20px 0px 0px 300px  ;
+   border: 1px solid #ddd;
+ 
+ }
+
+ th, td {
+     padding: 15px;
+     text-align: center;
+     border: 1px solid #ddd;
+ }
+
+ th {
+   background-color: rgb(134, 127, 127);
+   color: #fff;
+   font-weight: bold;
+   text-align: center !important;
+ }
+ td {
+     background-color: #f9f9f9;
+     color: #333;
+ }
+
+ tr:last-child td {
+     border-bottom: none;
+ }      
+     
+.sr{
+   padding-left: 300px;
+   margin: 20px; 
+   font-size: 32px; 
+   color: black; 
+   font-weight: bold;
+}
+body.dark .sr{
+   color: white;
+}
+    
+.hk {
+   
+   border-radius: 5px;
+   background-color: #0e8d0e9d; /* Default background color */
+   color: #fff;
+   display: flex;
+   font-weight: bold;
+   padding: 10px 15px;
+   margin-left: 1000px;
+   border: 2px solid #67b768;
+   cursor: pointer;
+
+}
+body.dark .hk {
+   background-color: black;
+   border: 1px solid #fff;
+   color: #fff;
+}
+.hk:hover{
+   color: #0e8d0e9d;
+   text-decoration: none;
+   border: 2px solid #0e8d0e9d;
+   background-color: white;
+ 
+}
+   body.dark td {
+       color: #fff;
+   }    

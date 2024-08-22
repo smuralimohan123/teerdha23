@@ -1,0 +1,126 @@
+{% load static %}
+<html>
+    <head>
+        
+        <title>icici offer</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+<link rel="stylesheet" href="{% static 'CSS/hotel/icici_offer.css' %}">
+
+
+
+
+    </head> 
+<body>
+  
+{% for jk in p %}
+<center> <img class="sh" src="{{ jk.image }}" alt="image" id="img"><br><br></center><br><br>
+
+<div class="col text-center">
+   
+    <a href="/hotelform" class="btn btn-primary btn-on-image" style="margin-top: -30px;">Book Now</a>
+</div>
+
+<div class="container" id="op">
+    <div class="col">
+       <b>{{ jk.title }}</b>
+    </div>
+    <div class="col">   
+       <b>{{ jk.couponcode }}</b>
+    </div>
+{% endfor %}
+
+</div><br><br>
+  <h3>Offer Details</h3>
+
+           <div class="container"  id="tabb">
+            <center>
+                <table class="text-center" border="1" style="height: 100px;">
+                   
+                    <tr style="background-color: rgb(198, 178, 218);">
+                    <th>Product</th>
+                    <th>Offer</th>
+                    </tr>
+                    {% for i in q %}
+                    <tr>
+                    <td>{{ i.applicable }}</td>
+                    <td>{{ i.offer }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            
+            </center><br><br>
+           </div>
+    
+
+<div class="container" style="background-color: rgb(232, 237, 237);border-radius: 10px;padding: 20px ; ">   
+
+ <h5>What do you get?</h5>  
+ <ul>
+    {% for ps in r %}
+    {% if ps.content %}
+    <li>{{ ps.content }}</li>
+    {% else %}
+    {% endif %}
+    {% endfor %}
+ </ul> 
+ </div>
+ <br>
+
+ <div class="container" style="background-color: rgb(232, 237, 237);border-radius: 10px;padding: 20px ;">
+ <h5>How do you get it?</h5>  
+ <ul>
+    {% for pq in r %}
+    {% if pq.content1 %}
+    <li>{{ pq.content1 }}</li>
+    {% else %}
+    {% endif %}
+    {% endfor %}
+ </ul> 
+ </div>
+ <br>
+ <div class="container" style="background-color: rgb(232, 237, 237);border-radius: 10px;padding: 20px ; ">
+ <h5>What else do you need to know?</h5> 
+ <ul>
+    {% for ki in r %}
+    {% if ki.content2 %}
+    <li>{{ ki.content2 }}</li>
+    {% else %}
+    {% endif %}
+    {% endfor %}
+ </ul> 
+ </div> 
+ <br>
+
+    
+ <div class="container" style="background-color: rgb(232, 237, 237);border-radius: 10px;padding: 20px ; "> 
+    <h5>Conditions in case of cancellation:</h5>
+    <ul>
+        {% for kl in r %}
+        {% if kl.content3 %}
+        <li>{{ kl.content3 }}</li>
+        {% else %}
+        {% endif %}
+        {% endfor %}
+    </ul>
+    </div>
+<br>
+<div class="container" style="background-color: rgb(232, 237, 237);border-radius: 10px;padding: 20px ;">
+    <h5>Terms & Conditions</h5>
+    <ul>
+        {% for k in r %}
+        {% if k.content4 %}
+        <li>{{ k.content4 }}</li>
+        {% else %}
+        {% endif %}
+        {% endfor %}
+    </ul>
+</div><br><br><br><br><br>
+</body>
+</html>

@@ -1,0 +1,58 @@
+{% extends 'dashboard_templates/admin.html' %}
+{% load static %}
+
+{% block main_content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'CSS/dashboard/buses_offersupdate.css' %}">
+
+    
+</head>
+<body class="jk">
+    <br>
+
+    <!-- Container for heading and buttons -->
+    <h3 class="sr">Buses Offers:</h3><br><br>
+    <div class="d-flex">
+        <a href="/bus_home/" class="hk">OFFER-INSERT-FORM</a>
+        <a id="offer-popup" class="vk">NEW-OFFER-INSERT-FORM</a>
+    </div><br>
+    
+    <table border="1">
+        <tr >
+            <th>ID</th>
+            <th>OFFER</th>
+            <th>URL</th>
+        </tr>
+        {% for i in op %}
+        <tr>
+            <td>{{ i.id }}</td>
+            <td>{{ i.offer }}</td>
+            <td><a href="{{ i.url }}"><i class="fas fa-edit" style="color: rgb(13, 128, 163); font-size: larger;"></i>&nbsp;</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% include 'dashboard_templates/buses_offer.html' %}
+
+    <script>
+        function openPopup() {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('offerPopup').style.display = 'block';
+        }
+
+        function BusesClosePopup() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('offerPopup').style.display = 'none';
+        }
+
+        document.getElementById('offer-popup').addEventListener('click', openPopup);
+    </script>
+
+</body>
+</html>
+{% endblock main_content %}
