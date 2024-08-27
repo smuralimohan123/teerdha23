@@ -83,11 +83,11 @@ WSGI_APPLICATION = 'Teerdhaproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':'booking_aug_20',
+        'NAME':'teerdha23',
         'PORT':'3306',
-        'PASSWORD':'',
-        'HOST':'localhost',
-        'USER':'root'
+        'PASSWORD':'murali@123',
+        'HOST':'teerdha23mu.mysql.database.azure.com',
+        'USER':'admin123'
     }
 }
 
